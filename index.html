@@ -458,6 +458,58 @@
             </div>
         </section>
 
+    <!-- AUTH MODAL -->
+    <div class="modal modal--hidden" id="auth-modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__container">
+            <div class="modal__header">
+                <div class="modal__tab-list" role="tablist" aria-label="Authentication tabs">
+                    <button class="modal__tab modal__tab--active" type="button" role="tab" aria-selected="true" aria-controls="login-panel">Entrar</button>
+                    <button class="modal__tab" type="button" role="tab" aria-selected="false" aria-controls="register-panel">Cadastrar</button>
+                </div>
+                <button class="modal__close-button" type="button" aria-label="Close modal">×</button>
+            </div>
 
+            <div class="modal__body">
+                <div class="modal__panel modal__panel--active" id="login-panel" role="tabpanel" aria-labelledby="login-tab">
+                    <form class="modal__form" action="#" method="post">
+                        <div class="modal__field">
+                            <label class="modal__label" for="login-email">E-mail</label>
+                            <input class="modal__input" type="email" id="login-email" name="email" placeholder="Digite seu e-mail">
+                        </div>
+                        <div class="modal__field">
+                            <label class="modal__label" for="login-password">Senha</label>
+                            <input class="modal__input" type="password" id="login-password" name="password" placeholder="Digite sua senha">
+                        </div>
+                        <button class="modal__button modal__button--primary" type="submit">Entrar</button>
+                    </form>
+                </div>
+
+                <div class="modal__panel" id="register-panel" role="tabpanel" aria-labelledby="register-tab" hidden>
+                    <form class="modal__form" action="#" method="post">
+                        <div class="modal__field">
+                            <label class="modal__label" for="register-name">Nome</label>
+                            <input class="modal__input" type="text" id="register-name" name="name" placeholder="Digite seu nome">
+                        </div>
+                        <div class="modal__field">
+                            <label class="modal__label" for="register-email">E-mail</label>
+                            <input class="modal__input" type="email" id="register-email" name="email" placeholder="Digite seu e-mail">
+                        </div>
+                        <div class="modal__field">
+                            <label class="modal__label" for="register-password">Senha</label>
+                            <input class="modal__input" type="password" id="register-password" name="password" placeholder="Crie uma senha">
+                        </div>
+                        <div class="modal__field">
+                            <label class="modal__label" for="register-confirm-password">Confirmar senha</label>
+                            <input class="modal__input" type="password" id="register-confirm-password" name="confirmPassword" placeholder="Confirme a senha">
+                        </div>
+                        <button class="modal__button modal__button--primary" type="submit">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
