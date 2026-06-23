@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sport Rent</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="CSS/style.css">
 
     <!-- Fonte -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -20,13 +20,13 @@
 
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="#">Buscar Quadras</a></li>
-                <li><a href="campeonatos.html">Campeonatos</a></li>
-                <li><a href="funcionamento.html">Como funciona</a></li>
-                <li><a href="contato.html">Contato</a></li>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#quadras">Buscar Quadras</a></li>
+                <li><a href="#campeonatos">Campeonatos</a></li>
+                <li><a href="#funcionamento">Como funciona</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
-        </nav>
+        </nav>  
 
         <div class="buttons">
             <button class="btn-login">Entrar</button>
@@ -35,73 +35,429 @@
     </header>
 
     <!-- HERO -->
-    <section class="hero">
-
+    <section class="hero" id="inicio">
         <div class="hero-text">
+            <span class="tag">Reserve quadras com facilidade</span>
+
             <h2>
-                O ESPORTE <br>
-                <span>CONECTA.</span><br>
-                NÓS FACILITAMOS.
+                O esporte conecta.<br>
+                <strong>Nós facilitamos.</strong>
             </h2>
 
             <p>
-                Encontre, reserve e jogue nos melhores
-                espaços esportivos da sua cidade.
+                Encontre quadras, campos e ginásios próximos de você.
+                Reserve horários, participe de campeonatos e viva o esporte
+                sem complicação.
             </p>
 
-            <button class="btn-primary">
-                Reservar agora
-            </button>
+            <div class="hero-buttons">
+                <button class="btn-primary">Reservar agora</button>
+                <button class="btn-secondary">Ver campeonatos</button>
+            </div>
         </div>
-
     </section>
 
     <!-- BUSCA -->
     <section class="search-box">
+        <div class="search-item">
+            <label>Cidade ou bairro</label>
+            <input type="text" placeholder="Ex: São Paulo">
+        </div>
 
-        <input type="text" placeholder="Cidade ou bairro">
-        <input type="text" placeholder="Modalidade">
-        <input type="date">
-        <input type="time">
+        <div class="search-item">
+            <label>Modalidade</label>
+            <select>
+                <option>Futebol society</option>
+                <option>Futsal</option>
+                <option>Vôlei</option>
+                <option>Basquete</option>
+                <option>Tênis</option>
+            </select>
+        </div>
+
+        <div class="search-item">
+            <label>Data</label>
+            <input type="date">
+        </div>
+
+        <div class="search-item">
+            <label>Horário</label>
+            <input type="time">
+        </div>
 
         <button class="btn-primary">Buscar</button>
-
     </section>
 
     <!-- QUADRAS -->
-    <section class="courts">
-
+    <section class="courts" id="quadras">
         <div class="section-title">
+            <span>Quadras disponíveis</span>
             <h2>Espaços em destaque</h2>
+            <p>Escolha o espaço ideal para jogar com seus amigos.</p>
         </div>
 
         <div class="cards">
 
             <div class="card">
-                <img src="Assets/quadra1.jpg" alt="Quadra">
+                <img src="Assets/quadra1.jpg" alt="Quadra de futebol society">
 
                 <div class="card-content">
-                    <h3>Arena Society</h3>
+                    <div class="card-top">
+                        <h3>Arena Society</h3>
+                        <span class="badge">Futebol</span>
+                    </div>
+
                     <p>São Paulo - SP</p>
 
-                    <span>R$ 120,00 / hora</span>
+                    <div class="card-footer">
+                        <strong>R$ 120,00 / hora</strong>
+                        <button>Reservar</button>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
-                <img src="Assets/quadra2.jpg" alt="Quadra">
+                <img src="Assets/quadra2.jpg" alt="Ginásio esportivo">
 
                 <div class="card-content">
-                    <h3>Ginásio Central</h3>
+                    <div class="card-top">
+                        <h3>Ginásio Central</h3>
+                        <span class="badge">Futsal</span>
+                    </div>
+
                     <p>São Paulo - SP</p>
 
-                    <span>R$ 90,00 / hora</span>
+                    <div class="card-footer">
+                        <strong>R$ 90,00 / hora</strong>
+                        <button>Reservar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Assets/quadra3.png" alt="Quadra poliesportiva">
+
+                <div class="card-content">
+                    <div class="card-top">
+                        <h3>Clube Esportivo</h3>
+                        <span class="badge">Futsal</span>
+                    </div>
+
+                    <p>Campinas - SP</p>
+
+                    <div class="card-footer">
+                        <strong>R$ 100,00 / hora</strong>
+                        <button>Reservar</button>
+                    </div>
                 </div>
             </div>
 
         </div>
-
     </section>
+
+    <!-- CAMPEONATOS -->
+    <section class="campeonatos" id="campeonatos">
+        <div class="section-title">
+            <span>Competições abertas</span>
+            <h2>Campeonatos em destaque</h2>
+            <p>Participe de torneios e competições com jogadores da sua região.</p>
+        </div>
+
+        <div class="campeonatos-buttons">
+            <button class="btn-secondary">Ver todos</button>
+            <button class="btn-primary">Criar campeonato</button>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <img src="Assets/quadra1.jpg" alt="Campeonato de Futebol">
+
+                <div class="card-content">
+                    <div class="card-top">
+                        <h3>Copa Região 2024</h3>
+                        <span class="badge">Futebol</span>
+                    </div>
+
+                    <div class="card-info">
+                        <p><strong>Premiação:</strong> <span class="prize">R$ 5.000</span></p>
+                        <p>🗓 12 de Junho - 30 de Junho</p>
+                        <p>📍 São Paulo - SP</p>
+                    </div>
+
+                    <div class="vagas-info">
+                        <span>8 de 16 vagas</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 50%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button>Inscrever-se</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Assets/quadra2.jpg" alt="Campeonato de Futsal">
+
+                <div class="card-content">
+                    <div class="card-top">
+                        <h3>Campeonato Futsal City</h3>
+                        <span class="badge">Futsal</span>
+                    </div>
+
+                    <div class="card-info">
+                        <p><strong>Premiação:</strong> <span class="prize">R$ 3.500</span></p>
+                        <p>🗓 15 de Junho - 25 de Junho</p>
+                        <p>📍 Campinas - SP</p>
+                    </div>
+
+                    <div class="vagas-info">
+                        <span>12 de 20 vagas</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button>Inscrever-se</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://placehold.co/400x220/111/39ff14?text=Campeonato" alt="Campeonato de Vôlei">
+
+                <div class="card-content">
+                    <div class="card-top">
+                        <h3>Open de Vôlei Regional</h3>
+                        <span class="badge">Vôlei</span>
+                    </div>
+
+                    <div class="card-info">
+                        <p><strong>Premiação:</strong> <span class="prize">R$ 4.200</span></p>
+                        <p>🗓 18 de Junho - 28 de Junho</p>
+                        <p>📍 Ribeirão Preto - SP</p>
+                    </div>
+
+                    <div class="vagas-info">
+                        <span>5 de 12 vagas</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 42%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button>Inscrever-se</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="torneios-abertos">
+            <h3>Torneios abertos para inscrição</h3>
+            
+            <div class="torneios-table">
+                <div class="torneios-header">
+                    <div class="header-col">Torneio</div>
+                    <div class="header-col">Modalidade</div>
+                    <div class="header-col">Data</div>
+                    <div class="header-col">Local</div>
+                    <div class="header-col">Vagas</div>
+                    <div class="header-col">Ação</div>
+                </div>
+
+                <div class="torneios-row">
+                    <div class="table-col">Champion League Futsal</div>
+                    <div class="table-col"><span class="badge">Futsal</span></div>
+                    <div class="table-col">20 Jun</div>
+                    <div class="table-col">São Paulo - SP</div>
+                    <div class="table-col">4 / 24</div>
+                    <div class="table-col"><button class="btn-table">Inscrever-se</button></div>
+                </div>
+
+                <div class="torneios-row">
+                    <div class="table-col">Campeonato Municipal Futebol</div>
+                    <div class="table-col"><span class="badge">Futebol</span></div>
+                    <div class="table-col">25 Jun</div>
+                    <div class="table-col">Santos - SP</div>
+                    <div class="table-col">6 / 16</div>
+                    <div class="table-col"><button class="btn-table">Inscrever-se</button></div>
+                </div>
+
+                <div class="torneios-row">
+                    <div class="table-col">Torneio de Vôlei Indoor</div>
+                    <div class="table-col"><span class="badge">Vôlei</span></div>
+                    <div class="table-col">22 Jun</div>
+                    <div class="table-col">Sorocaba - SP</div>
+                    <div class="table-col">10 / 18</div>
+                    <div class="table-col"><button class="btn-table">Inscrever-se</button></div>
+                </div>
+
+                <div class="torneios-row">
+                    <div class="table-col">Liga Amadora de Basquete</div>
+                    <div class="table-col"><span class="badge">Basquete</span></div>
+                    <div class="table-col">28 Jun</div>
+                    <div class="table-col">Piracicaba - SP</div>
+                    <div class="table-col">3 / 12</div>
+                    <div class="table-col"><button class="btn-table">Inscrever-se</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="how-it-works" id="funcionamento">
+        <div class="section-title">
+            <span>Processo simples</span>
+            <h2>Como funciona</h2>
+            <p>Em poucos passos você encontra e reserva seu espaço esportivo.</p>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h3>Busque</h3>
+                <p>Escolha cidade, modalidade, data e horário.</p>
+            </div>
+
+            <div class="step-connector"></div>
+
+            <div class="step">
+                <div class="step-number">02</div>
+                <i class="fa-solid fa-list-check"></i>
+                <h3>Compare</h3>
+                <p>Veja preços, locais e avaliações disponíveis.</p>
+            </div>
+
+            <div class="step-connector"></div>
+
+            <div class="step">
+                <div class="step-number">03</div>
+                <i class="fa-solid fa-credit-card"></i>
+                <h3>Reserve</h3>
+                <p>Pagamento rápido, seguro e sem complicação.</p>
+            </div>
+
+            <div class="step-connector"></div>
+
+            <div class="step">
+                <div class="step-number">04</div>
+                <i class="fa-solid fa-trophy"></i>
+                <h3>Jogue</h3>
+                <p>Apareça na hora marcada e aproveite o esporte.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contato -->
+     <!-- CONTATO -->
+    <main class="contato-container">
+
+        <!-- INFORMAÇÕES -->
+        <section class="contato-info" id="contato">
+            <h2>Entre em contato</h2>
+            <p>Estamos aqui para ajudar. Fale conosco!</p>
+
+            <div class="info-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div>
+                    <h3>E-mail</h3>
+                    <p>contato@sportrent.com.br</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fa-brands fa-whatsapp"></i>
+                <div>
+                    <h3>Telefone / WhatsApp</h3>
+                    <p>(14) 99890-9909</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                    <h3>Endereço</h3>
+                    <p>
+                        Rua Das Éricas 190 - Cidade Jardim<br>
+                        Monte Carmelo - MG, 38500-000
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fa-regular fa-clock"></i>
+                <div>
+                    <h3>Horário de atendimento</h3>
+                    <p>
+                        Seg a Sex: 8h às 18h<br>
+                        Sáb: 8h às 12h
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO -->
+        <section class="contato-form">
+            <h2>Envie uma mensagem</h2>
+
+            <form>
+                <div class="form-linha">
+                    <div class="campo">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" placeholder="Seu nome">
+                    </div>
+
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="Seu e-mail">
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="assunto">Assunto</label>
+                    <select id="assunto">
+                        <option>Selecione o assunto</option>
+                        <option>Reserva de quadra</option>
+                        <option>Campeonatos</option>
+                        <option>Problemas com pagamento</option>
+                        <option>Outro assunto</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" placeholder="Digite sua mensagem..."></textarea>
+                </div>
+
+                <button type="submit">Enviar mensagem</button>
+            </form>
+        </section>
+
+        <!-- LOCALIZAÇÃO E REDES -->
+        <section class="contato-local">
+            <h2>Onde estamos</h2>
+
+            <div class="mapa">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+
+            <div class="redes-box">
+                <h2>Siga-nos nas redes sociais</h2>
+                <p>Acompanhe novidades, promoções e eventos.</p>
+
+                <div class="redes">
+                    <a href="#"><i class="fa-brands fa-instagram instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok tiktok"></i></a>
+                </div>
+            </div>
+        </section>
+
 
 </body>
 </html>
