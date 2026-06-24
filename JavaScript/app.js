@@ -82,6 +82,9 @@ const reservaQuadra = document.getElementById('reserva-quadra');
 const reservaModalidade = document.getElementById('reserva-modalidade');
 const reservaLocal = document.getElementById('reserva-local');
 const reservaPreco = document.getElementById('reserva-preco');
+const horarioButtons = Array.from(document.querySelectorAll('.horario-btn'));
+const reservaHorarioInput = document.getElementById('reserva-horario');
+const horarioSelecionadoTexto = document.getElementById('horario-selecionado'); 
 
 function openReservaModal(button){
     if(!reservaModal) return;
@@ -97,15 +100,12 @@ function openReservaModal(button){
     reservaPreco.textContent = preco;
 
     const buscaData = document.getElementById('busca-data')?.value;
-    const buscaHorario = document.getElementById('busca-horario')?.value;
 
     if(buscaData){
         document.getElementById('reserva-data').value = buscaData;
     }
 
-    if(buscaHorario){
-        document.getElementById('reserva-horario').value = buscaHorario;
-    }
+    limparHorarioSelecionado();
 
     reservaMessage.textContent = '';
     reservaMessage.className = 'reserva-message';
@@ -113,6 +113,44 @@ function openReservaModal(button){
     reservaModal.classList.remove('modal--hidden');
     setBodyScrollLocked(true);
 }
+
+function limparHorarioSelecionado(){
+    if(reservaHorarioInput){
+        reservaHorarioInput.value = '';
+    }
+
+    if(horarioSelecionadoTexto){
+        horarioSelecionadoTexto.textContent = 'Nenhum horário selecionado';
+    }
+
+    horarioButtons.forEach(button => {
+        button.classList.remove('horario-btn--selecionado');
+    });
+}
+
+function selecionarHorario(button){
+    if(button.disabled) return;
+
+    const horario = button.dataset.horario;
+
+    reservaHorarioInput.value = horario;
+
+    horarioButtons.forEach(item => {
+        item.classList.remove('horario-btn--selecionado');
+    });
+
+    button.classList.add('horario-btn--selecionado');
+
+    horarioSelecionadoTexto.innerHTML = `
+        Horário selecionado: <strong>${horario}</strong>
+    `;
+}
+
+horarioButtons.forEach(button => {
+    button.addEventListener('click', function(){
+        selecionarHorario(button);
+    });
+});
 
 function closeReservaModal(){
     if(!reservaModal) return;
@@ -122,6 +160,8 @@ function closeReservaModal(){
 
     reservaMessage.textContent = '';
     reservaMessage.className = 'reserva-message';
+
+    limparHorarioSelecionado();
 }
 
 reservaButtons.forEach(button => {

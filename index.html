@@ -81,8 +81,13 @@
         </div>
 
         <div class="search-item">
-            <label>Horário</label>
-            <input type="time" id="busca-horario">
+            <label>Período</label>
+            <select id="busca-periodo">
+                <option value="">Qualquer horário</option>
+                <option value="manha">Manhã</option>
+                <option value="tarde">Tarde</option>
+                <option value="noite">Noite</option>
+            </select>
         </div>
 
         <button class="btn-primary">Buscar</button>
@@ -479,7 +484,7 @@
             </div>
         </section>
     </main>
-    
+
     <!-- MODAL DE LOGIN E CADASTRO -->
     <div class="modal modal--hidden" id="auth-modal">
         <div class="modal__overlay"></div>
@@ -570,9 +575,76 @@
                         <input class="modal__input" type="date" id="reserva-data">
                     </div>
 
-                    <div class="modal__field">
-                        <label class="modal__label" for="reserva-horario">Horário</label>
-                        <input class="modal__input" type="time" id="reserva-horario">
+                    <div class="modal__field reserva-field-full">
+                        <label class="modal__label">Horários disponíveis</label>
+
+                        <div class="horarios-grid" id="horarios-grid">
+                            <button type="button" class="horario-btn" data-horario="08:00">
+                                08:00
+                                <small>Disponível</small>
+                            </button>
+
+                            <button type="button" class="horario-btn" data-horario="09:00">
+                                09:00
+                                <small>Disponível</small>
+                            </button>
+
+                            <button type="button" class="horario-btn" data-horario="10:00">
+                                10:00
+                                <small>Disponível</small>
+                            </button>
+
+                            <button type="button" class="horario-btn" data-horario="11:00">
+                                11:00
+                                <small>Disponível</small>
+                            </button>
+
+                            <button type="button" class="horario-btn horario-btn--indisponivel" data-horario="12:00" disabled>
+                                12:00
+                                <small>Ocupado</small>
+                            </button>
+
+                            <button type="button" class="horario-btn" data-horario="14:00">
+                                14:00
+                                <small>Disponível</small>
+                            </button>
+
+                            <button type="button" class="horario-btn" data-horario="15:00">
+                                15:00
+                                <small>Disponível</small>
+                            </button>
+
+                            <button type="button" class="horario-btn horario-btn--indisponivel" data-horario="16:00" disabled>
+                                16:00
+                                <small>Ocupado</small>
+                            </button>
+
+                            <button type="button" class="horario-btn" data-horario="18:00">
+                                18:00
+                                <small>Disponível</small>
+                            </button>
+
+                            <button type="button" class="horario-btn" data-horario="19:00">
+                                19:00
+                                <small>Disponível</small>
+                            </button>
+
+                            <button type="button" class="horario-btn" data-horario="20:00">
+                                20:00
+                                <small>Disponível</small>
+                            </button>
+
+                            <button type="button" class="horario-btn" data-horario="21:00">
+                                21:00
+                                <small>Disponível</small>
+                            </button>
+                        </div>
+
+                        <input type="hidden" id="reserva-horario">
+
+                        <p class="horario-selecionado" id="horario-selecionado">
+                            Nenhum horário selecionado
+                        </p>
                     </div>
 
                     <div class="modal__field reserva-field-full">

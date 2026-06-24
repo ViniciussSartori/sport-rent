@@ -1328,3 +1328,89 @@ nav a:hover{
         max-width: 95%;
     }
 }
+
+/* HORÁRIOS DISPONÍVEIS */
+
+.horarios-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.horario-btn{
+    background-color: #0b0b0b;
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+
+    padding: 14px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.horario-btn small{
+    color: #aaa;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.horario-btn:hover{
+    border-color: #39ff14;
+    transform: translateY(-3px);
+}
+
+.horario-btn--selecionado{
+    background-color: #39ff14;
+    color: black;
+    border-color: #39ff14;
+    box-shadow: 0 0 18px rgba(57, 255, 20, 0.35);
+}
+
+.horario-btn--selecionado small{
+    color: black;
+}
+
+.horario-btn--indisponivel{
+    background-color: #1a1a1a;
+    color: #666;
+
+    border-color: rgba(255,255,255,0.08);
+
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.horario-btn--indisponivel:hover{
+    transform: none;
+    border-color: rgba(255,255,255,0.08);
+}
+
+.horario-btn--indisponivel small{
+    color: #ff4d4d;
+}
+
+.horario-selecionado{
+    margin-top: 12px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.horario-selecionado strong{
+    color: #39ff14;
+}
+
+@media(max-width: 600px){
+    .horarios-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
