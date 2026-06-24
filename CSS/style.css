@@ -1250,11 +1250,24 @@ nav a:hover{
 /* MODAL DE RESERVA */
 
 .modal__container--reserva{
-    max-width: 620px;
+    max-width: 560px;
+    max-height: 86vh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.modal__container--reserva .modal__body{
+    overflow-y: auto;
+    padding: 18px 22px 22px;
 }
 
 .modal__header--simple{
-    padding: 24px 24px 0;
+    padding: 18px 22px 12px;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .modal__header--simple h2{
@@ -1265,15 +1278,15 @@ nav a:hover{
 .reserva-resumo{
     background-color: rgba(57, 255, 20, 0.08);
     border: 1px solid rgba(57, 255, 20, 0.25);
-    border-radius: 16px;
-    padding: 18px;
-    margin-bottom: 22px;
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 16px;
 }
 
 .reserva-resumo h3{
     color: #39ff14;
-    font-size: 22px;
-    margin-bottom: 12px;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .reserva-detalhes{
@@ -1293,15 +1306,15 @@ nav a:hover{
 .reserva-form-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
+    gap: 12px;
+}   
 
 .reserva-field-full{
     grid-column: 1 / -1;
 }
 
 .modal__input--textarea{
-    min-height: 90px;
+    min-height: 70px;
     resize: none;
 }
 
@@ -1329,12 +1342,26 @@ nav a:hover{
     }
 }
 
+.modal__container--reserva .modal__body::-webkit-scrollbar{
+    width: 8px;
+}
+
+.modal__container--reserva .modal__body::-webkit-scrollbar-track{
+    background-color: #111;
+    border-radius: 20px;
+}
+
+.modal__container--reserva .modal__body::-webkit-scrollbar-thumb{
+    background-color: #39ff14;
+    border-radius: 20px;
+}
+
 /* HORÁRIOS DISPONÍVEIS */
 
 .horarios-grid{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 8px;
 }
 
 .horario-btn{
@@ -1342,19 +1369,19 @@ nav a:hover{
     color: white;
 
     border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 12px;
+    border-radius: 10px;
 
-    padding: 14px 10px;
+    padding: 10px 8px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
 
     cursor: pointer;
     transition: 0.3s;
 
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
 }
 
@@ -1410,6 +1437,23 @@ nav a:hover{
 }
 
 @media(max-width: 600px){
+    .modal{
+        padding: 12px;
+    }
+
+    .modal__container--reserva{
+        max-width: 100%;
+        max-height: 92vh;
+    }
+
+    .modal__container--reserva .modal__body{
+        padding: 16px;
+    }
+
+    .reserva-form-grid{
+        grid-template-columns: 1fr;
+    }
+
     .horarios-grid{
         grid-template-columns: repeat(2, 1fr);
     }
