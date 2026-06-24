@@ -1458,3 +1458,74 @@ nav a:hover{
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* ESCOLHA PROFISSIONAL DE DATA */
+
+.datas-rapidas{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.data-btn{
+    background-color: #0b0b0b;
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+
+    padding: 14px 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.data-btn strong{
+    font-size: 15px;
+}
+
+.data-btn span{
+    color: #aaa;
+    font-size: 13px;
+}
+
+.data-btn:hover{
+    border-color: #39ff14;
+    transform: translateY(-3px);
+}
+
+.data-btn--selecionada{
+    background-color: #39ff14;
+    color: black;
+    border-color: #39ff14;
+    box-shadow: 0 0 18px rgba(57, 255, 20, 0.35);
+}
+
+.data-btn--selecionada span{
+    color: black;
+}
+
+.data-calendario{
+    margin-top: 8px;
+}
+
+.data-selecionada{
+    margin-top: 12px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.data-selecionada strong{
+    color: #39ff14;
+}
+
+@media(max-width: 600px){
+    .datas-rapidas{
+        grid-template-columns: 1fr;
+    }
+}

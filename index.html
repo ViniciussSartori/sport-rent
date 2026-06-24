@@ -570,9 +570,34 @@
                         <input class="modal__input" type="tel" id="reserva-telefone" placeholder="(00) 00000-0000">
                     </div>
 
-                    <div class="modal__field">
-                        <label class="modal__label" for="reserva-data">Data</label>
-                        <input class="modal__input" type="date" id="reserva-data">
+                    <div class="modal__field reserva-field-full">
+                        <label class="modal__label">Escolha a data</label>
+
+                        <div class="datas-rapidas" id="datas-rapidas">
+                            <button type="button" class="data-btn" data-dias="0">
+                                <strong>Hoje</strong>
+                                <span id="data-hoje">--/--</span>
+                            </button>
+
+                            <button type="button" class="data-btn" data-dias="1">
+                                <strong>Amanhã</strong>
+                                <span id="data-amanha">--/--</span>
+                            </button>
+
+                            <button type="button" class="data-btn" data-dias="2">
+                                <strong>Depois</strong>
+                                <span id="data-depois">--/--</span>
+                            </button>
+                        </div>
+
+                        <div class="data-calendario">
+                            <label class="modal__label" for="reserva-data">Ou escolha no calendário</label>
+                            <input class="modal__input" type="date" id="reserva-data">
+                        </div>
+
+                        <p class="data-selecionada" id="data-selecionada">
+                            Nenhuma data selecionada
+                        </p>
                     </div>
 
                     <div class="modal__field reserva-field-full">

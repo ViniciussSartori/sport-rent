@@ -101,8 +101,13 @@ function openReservaModal(button){
 
     const buscaData = document.getElementById('busca-data')?.value;
 
+    limparDataSelecionada();
+
     if(buscaData){
-        document.getElementById('reserva-data').value = buscaData;
+        reservaDataInput.value = buscaData;
+        atualizarTextoDataSelecionada(buscaData);
+    }else{
+        reservaDataInput.value = '';
     }
 
     limparHorarioSelecionado();
@@ -162,6 +167,7 @@ function closeReservaModal(){
     reservaMessage.className = 'reserva-message';
 
     limparHorarioSelecionado();
+    limparDataSelecionada();
 }
 
 reservaButtons.forEach(button => {
@@ -223,3 +229,134 @@ if(reservaForm){
         }, 1500);
     });
 }
+
+// SELEÇÃO PROFISSIONAL DE DATA
+
+const buscaDataInput = document.getElementById('busca-data');
+const reservaDataInput = document.getElementById('reserva-data');
+
+const dataButtons = Array.from(document.querySelectorAll('.data-btn'));
+const dataSelecionadaTexto = document.getElementById('data-selecionada');
+
+const dataHojeTexto = document.getElementById('data-hoje');
+const dataAmanhaTexto = document.getElementById('data-amanha');
+const dataDepoisTexto = document.getElementById('data-depois');
+
+function formatarDataInput(data){
+    const ano = data.getFullYear();
+    const mes = String(data.getMonth() + 1).padStart(2, '0');
+    const dia = String(data.getDate()).padStart(2, '0');
+
+    return `${ano}-${mes}-${dia}`;
+}
+
+function formatarDataBR(data){
+    return data.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit'
+    });
+}
+
+function obterDataComAcrescimo(dias){
+    const data = new Date();
+    data.setHours(0, 0, 0, 0);
+    data.setDate(data.getDate() + dias);
+
+    return data;
+}
+
+function configurarDatasMinimas(){
+    const hoje = formatarDataInput(obterDataComAcrescimo(0));
+
+    if(buscaDataInput){
+        buscaDataInput.min = hoje;
+    }
+
+    if(reservaDataInput){
+        reservaDataInput.min = hoje;
+    }
+}
+
+function preencherDatasRapidas(){
+    if(dataHojeTexto){
+        dataHojeTexto.textContent = formatarDataBR(obterDataComAcrescimo(0));
+    }
+
+    if(dataAmanhaTexto){
+        dataAmanhaTexto.textContent = formatarDataBR(obterDataComAcrescimo(1));
+    }
+
+    if(dataDepoisTexto){
+        dataDepoisTexto.textContent = formatarDataBR(obterDataComAcrescimo(2));
+    }
+}
+
+function limparDataSelecionada(){
+    dataButtons.forEach(button => {
+        button.classList.remove('data-btn--selecionada');
+    });
+
+    if(dataSelecionadaTexto){
+        dataSelecionadaTexto.textContent = 'Nenhuma data selecionada';
+    }
+}
+
+function atualizarTextoDataSelecionada(valorData){
+    if(!valorData || !dataSelecionadaTexto) return;
+
+    const [ano, mes, dia] = valorData.split('-');
+
+    dataSelecionadaTexto.innerHTML = `
+        Data selecionada: <strong>${dia}/${mes}/${ano}</strong>
+    `;
+}
+
+function selecionarDataRapida(button){
+    const dias = Number(button.dataset.dias);
+    const data = obterDataComAcrescimo(dias);
+    const dataFormatada = formatarDataInput(data);
+
+    if(reservaDataInput){
+        reservaDataInput.value = dataFormatada;
+    }
+
+    dataButtons.forEach(item => {
+        item.classList.remove('data-btn--selecionada');
+    });
+
+    button.classList.add('data-btn--selecionada');
+
+    atualizarTextoDataSelecionada(dataFormatada);
+}
+
+dataButtons.forEach(button => {
+    button.addEventListener('click', function(){
+        selecionarDataRapida(button);
+    });
+});
+
+if(reservaDataInput){
+    reservaDataInput.addEventListener('change', function(){
+        const hoje = formatarDataInput(obterDataComAcrescimo(0));
+
+        if(reservaDataInput.value < hoje){
+            reservaDataInput.value = hoje;
+        }
+
+        limparDataSelecionada();
+        atualizarTextoDataSelecionada(reservaDataInput.value);
+    });
+}
+
+if(buscaDataInput){
+    buscaDataInput.addEventListener('change', function(){
+        const hoje = formatarDataInput(obterDataComAcrescimo(0));
+
+        if(buscaDataInput.value < hoje){
+            buscaDataInput.value = hoje;
+        }
+    });
+}
+
+configurarDatasMinimas();
+preencherDatasRapidas();
