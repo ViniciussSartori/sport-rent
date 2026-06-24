@@ -134,6 +134,11 @@ nav a:hover{
     color: #39ff14;
 }
 
+.hero-buttons a{
+    text-decoration: none;
+    display: inline-block;
+}
+
 /* HERO */
 
 .hero{
