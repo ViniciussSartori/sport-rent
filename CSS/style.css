@@ -1246,3 +1246,85 @@ nav a:hover{
         width: 100%;
     }
 }
+
+/* MODAL DE RESERVA */
+
+.modal__container--reserva{
+    max-width: 620px;
+}
+
+.modal__header--simple{
+    padding: 24px 24px 0;
+}
+
+.modal__header--simple h2{
+    font-size: 24px;
+    color: white;
+}
+
+.reserva-resumo{
+    background-color: rgba(57, 255, 20, 0.08);
+    border: 1px solid rgba(57, 255, 20, 0.25);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+
+.reserva-resumo h3{
+    color: #39ff14;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.reserva-detalhes{
+    display: grid;
+    gap: 8px;
+}
+
+.reserva-detalhes p{
+    color: #ddd;
+    font-size: 14px;
+}
+
+.reserva-detalhes strong{
+    color: white;
+}
+
+.reserva-form-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.reserva-field-full{
+    grid-column: 1 / -1;
+}
+
+.modal__input--textarea{
+    min-height: 90px;
+    resize: none;
+}
+
+.reserva-message{
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.reserva-message.success{
+    color: #39ff14;
+}
+
+.reserva-message.error{
+    color: #ff4d4d;
+}
+
+@media(max-width: 600px){
+    .reserva-form-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .modal__container--reserva{
+        max-width: 95%;
+    }
+}

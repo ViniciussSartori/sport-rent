@@ -61,12 +61,12 @@
     <section class="search-box" id="buscar-quadras">
         <div class="search-item">
             <label>Cidade ou bairro</label>
-            <input type="text" placeholder="Ex: São Paulo">
+            <input type="text" id="busca-cidade" placeholder="Ex: São Paulo">
         </div>
 
         <div class="search-item">
             <label>Modalidade</label>
-            <select>
+            <select id="busca-modalidade">
                 <option>Futebol society</option>
                 <option>Futsal</option>
                 <option>Vôlei</option>
@@ -77,12 +77,12 @@
 
         <div class="search-item">
             <label>Data</label>
-            <input type="date">
+            <input type="date" id="busca-data">
         </div>
 
         <div class="search-item">
             <label>Horário</label>
-            <input type="time">
+            <input type="time" id="busca-horario">
         </div>
 
         <button class="btn-primary">Buscar</button>
@@ -111,7 +111,14 @@
 
                     <div class="card-footer">
                         <strong>R$ 120,00 / hora</strong>
-                        <button>Reservar</button>
+                        <button 
+                            class="btn-reservar"
+                            data-quadra="Arena Society"
+                            data-modalidade="Futebol"
+                            data-local="São Paulo - SP"
+                            data-preco="R$ 120,00 / hora">
+                            Reservar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -129,7 +136,14 @@
 
                     <div class="card-footer">
                         <strong>R$ 90,00 / hora</strong>
-                        <button>Reservar</button>
+                        <button 
+                            class="btn-reservar"
+                            data-quadra="Ginásio Central"
+                            data-modalidade="Futsal"
+                            data-local="São Paulo - SP"
+                            data-preco="R$ 90,00 / hora">
+                            Reservar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -147,7 +161,14 @@
 
                     <div class="card-footer">
                         <strong>R$ 100,00 / hora</strong>
-                        <button>Reservar</button>
+                        <button 
+                            class="btn-reservar"
+                            data-quadra="Clube Esportivo"
+                            data-modalidade="Futsal"
+                            data-local="Campinas - SP"
+                            data-preco="R$ 100,00 / hora">
+                            Reservar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -457,8 +478,9 @@
                 </div>
             </div>
         </section>
-
-    <!-- AUTH MODAL -->
+    </main>
+    
+    <!-- MODAL DE LOGIN E CADASTRO -->
     <div class="modal modal--hidden" id="auth-modal">
         <div class="modal__overlay"></div>
         <div class="modal__container">
@@ -510,6 +532,75 @@
         </div>
     </div>
 
-    <script src="/sport-rent/JavaScript/app.js"></script>
+    <!-- MODAL DE RESERVA -->
+    <div class="modal modal--hidden" id="reserva-modal">
+    <div class="modal__overlay" id="reserva-overlay"></div>
+
+    <div class="modal__container modal__container--reserva">
+        <div class="modal__header modal__header--simple">
+            <h2>Reservar quadra</h2>
+            <button class="modal__close-button" id="reserva-close" type="button">×</button>
+        </div>
+
+        <div class="modal__body">
+            <div class="reserva-resumo">
+                <h3 id="reserva-quadra">Quadra selecionada</h3>
+
+                <div class="reserva-detalhes">
+                    <p><strong>Modalidade:</strong> <span id="reserva-modalidade"></span></p>
+                    <p><strong>Local:</strong> <span id="reserva-local"></span></p>
+                    <p><strong>Preço:</strong> <span id="reserva-preco"></span></p>
+                </div>
+            </div>
+
+            <form class="modal__form" id="reserva-form">
+                <div class="reserva-form-grid">
+                    <div class="modal__field">
+                        <label class="modal__label" for="reserva-nome">Nome completo</label>
+                        <input class="modal__input" type="text" id="reserva-nome" placeholder="Digite seu nome">
+                    </div>
+
+                    <div class="modal__field">
+                        <label class="modal__label" for="reserva-telefone">Telefone</label>
+                        <input class="modal__input" type="tel" id="reserva-telefone" placeholder="(00) 00000-0000">
+                    </div>
+
+                    <div class="modal__field">
+                        <label class="modal__label" for="reserva-data">Data</label>
+                        <input class="modal__input" type="date" id="reserva-data">
+                    </div>
+
+                    <div class="modal__field">
+                        <label class="modal__label" for="reserva-horario">Horário</label>
+                        <input class="modal__input" type="time" id="reserva-horario">
+                    </div>
+
+                    <div class="modal__field reserva-field-full">
+                        <label class="modal__label" for="reserva-duracao">Duração</label>
+                        <select class="modal__input" id="reserva-duracao">
+                            <option value="">Selecione a duração</option>
+                            <option>1 hora</option>
+                            <option>2 horas</option>
+                            <option>3 horas</option>
+                        </select>
+                    </div>
+
+                    <div class="modal__field reserva-field-full">
+                        <label class="modal__label" for="reserva-observacoes">Observações</label>
+                        <textarea class="modal__input modal__input--textarea" id="reserva-observacoes" placeholder="Ex: reserva para jogo entre amigos"></textarea>
+                    </div>
+                </div>
+
+                <button class="modal__button modal__button--primary" type="submit">
+                    Confirmar reserva
+                </button>
+
+                <p class="reserva-message" id="reserva-message"></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <script src="JavaScript/app.js"></script>
 </body>
 </html>

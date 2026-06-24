@@ -1,10 +1,11 @@
 const authModal = document.getElementById('auth-modal');
 const loginButton = document.querySelector('.navbar .btn-login');
 const registerButton = document.querySelector('.navbar .btn-primary');
-const closeButton = document.querySelector('.modal__close-button');
-const overlay = document.querySelector('.modal__overlay');
-const tabButtons = Array.from(document.querySelectorAll('.modal__tab'));
-const tabPanels = Array.from(document.querySelectorAll('.modal__panel'));
+
+const closeButton = authModal ? authModal.querySelector('.modal__close-button') : null;
+const overlay = authModal ? authModal.querySelector('.modal__overlay') : null;
+const tabButtons = authModal ? Array.from(authModal.querySelectorAll('.modal__tab')) : [];
+const tabPanels = authModal ? Array.from(authModal.querySelectorAll('.modal__panel')) : [];
 
 function setBodyScrollLocked(locked) {
     document.body.style.overflow = locked ? 'hidden' : '';
@@ -63,5 +64,122 @@ if (tabButtons.length) {
             const tabKey = targetPanel.replace('-panel', '');
             setActiveTab(tabKey);
         });
+    });
+}
+
+
+// MODAL DE RESERVA
+
+const reservaModal = document.getElementById('reserva-modal');
+const reservaOverlay = document.getElementById('reserva-overlay');
+const reservaCloseButton = document.getElementById('reserva-close');
+const reservaForm = document.getElementById('reserva-form');
+const reservaMessage = document.getElementById('reserva-message');
+
+const reservaButtons = Array.from(document.querySelectorAll('.btn-reservar'));
+
+const reservaQuadra = document.getElementById('reserva-quadra');
+const reservaModalidade = document.getElementById('reserva-modalidade');
+const reservaLocal = document.getElementById('reserva-local');
+const reservaPreco = document.getElementById('reserva-preco');
+
+function openReservaModal(button){
+    if(!reservaModal) return;
+
+    const quadra = button.dataset.quadra;
+    const modalidade = button.dataset.modalidade;
+    const local = button.dataset.local;
+    const preco = button.dataset.preco;
+
+    reservaQuadra.textContent = quadra;
+    reservaModalidade.textContent = modalidade;
+    reservaLocal.textContent = local;
+    reservaPreco.textContent = preco;
+
+    const buscaData = document.getElementById('busca-data')?.value;
+    const buscaHorario = document.getElementById('busca-horario')?.value;
+
+    if(buscaData){
+        document.getElementById('reserva-data').value = buscaData;
+    }
+
+    if(buscaHorario){
+        document.getElementById('reserva-horario').value = buscaHorario;
+    }
+
+    reservaMessage.textContent = '';
+    reservaMessage.className = 'reserva-message';
+
+    reservaModal.classList.remove('modal--hidden');
+    setBodyScrollLocked(true);
+}
+
+function closeReservaModal(){
+    if(!reservaModal) return;
+
+    reservaModal.classList.add('modal--hidden');
+    setBodyScrollLocked(false);
+
+    reservaMessage.textContent = '';
+    reservaMessage.className = 'reserva-message';
+}
+
+reservaButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        openReservaModal(button);
+    });
+});
+
+if(reservaCloseButton){
+    reservaCloseButton.addEventListener('click', closeReservaModal);
+}
+
+if(reservaOverlay){
+    reservaOverlay.addEventListener('click', closeReservaModal);
+}
+
+if(reservaForm){
+    reservaForm.addEventListener('submit', function(event){
+        event.preventDefault();
+
+        const nome = document.getElementById('reserva-nome').value.trim();
+        const telefone = document.getElementById('reserva-telefone').value.trim();
+        const data = document.getElementById('reserva-data').value;
+        const horario = document.getElementById('reserva-horario').value;
+        const duracao = document.getElementById('reserva-duracao').value;
+        const observacoes = document.getElementById('reserva-observacoes').value.trim();
+
+        if(nome === '' || telefone === '' || data === '' || horario === '' || duracao === ''){
+            reservaMessage.textContent = 'Preencha todos os campos obrigatórios.';
+            reservaMessage.className = 'reserva-message error';
+            return;
+        }
+
+        const novaReserva = {
+            quadra: reservaQuadra.textContent,
+            modalidade: reservaModalidade.textContent,
+            local: reservaLocal.textContent,
+            preco: reservaPreco.textContent,
+            nome: nome,
+            telefone: telefone,
+            data: data,
+            horario: horario,
+            duracao: duracao,
+            observacoes: observacoes
+        };
+
+        const reservasSalvas = JSON.parse(localStorage.getItem('reservasSportRent')) || [];
+
+        reservasSalvas.push(novaReserva);
+
+        localStorage.setItem('reservasSportRent', JSON.stringify(reservasSalvas));
+
+        reservaMessage.textContent = 'Reserva realizada com sucesso!';
+        reservaMessage.className = 'reserva-message success';
+
+        setTimeout(() => {
+            reservaForm.reset();
+            closeReservaModal();
+        }, 1500);
     });
 }
