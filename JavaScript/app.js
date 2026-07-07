@@ -77,6 +77,7 @@ const reservaForm = document.getElementById('reserva-form');
 const reservaMessage = document.getElementById('reserva-message');
 
 const reservaButtons = Array.from(document.querySelectorAll('.btn-reservar'));
+let quadraSelecionadaId = null;
 
 const reservaQuadra = document.getElementById('reserva-quadra');
 const reservaModalidade = document.getElementById('reserva-modalidade');
@@ -88,6 +89,8 @@ const horarioSelecionadoTexto = document.getElementById('horario-selecionado');
 
 function openReservaModal(button){
     if(!reservaModal) return;
+
+    quadraSelecionadaId = button.dataset.quadraId;
 
     const quadra = button.dataset.quadra;
     const modalidade = button.dataset.modalidade;
@@ -185,7 +188,7 @@ if(reservaOverlay){
 }
 
 if(reservaForm){
-    reservaForm.addEventListener('submit', function(event){
+    reservaForm.addEventListener('submit', async function(event){
         event.preventDefault();
 
         const nome = document.getElementById('reserva-nome').value.trim();
@@ -201,32 +204,47 @@ if(reservaForm){
             return;
         }
 
-        const novaReserva = {
-            quadra: reservaQuadra.textContent,
-            modalidade: reservaModalidade.textContent,
-            local: reservaLocal.textContent,
-            preco: reservaPreco.textContent,
-            nome: nome,
-            telefone: telefone,
-            data: data,
-            horario: horario,
-            duracao: duracao,
-            observacoes: observacoes
-        };
+        if(!quadraSelecionadaId){
+            reservaMessage.textContent = 'Erro: nenhuma quadra selecionada.';
+            reservaMessage.className = 'reserva-message error';
+            return;
+        }
 
-        const reservasSalvas = JSON.parse(localStorage.getItem('reservasSportRent')) || [];
+        const formData = new FormData();
 
-        reservasSalvas.push(novaReserva);
+        formData.append('quadra_id', quadraSelecionadaId);
+        formData.append('nome_cliente', nome);
+        formData.append('telefone', telefone);
+        formData.append('data_reserva', data);
+        formData.append('horario', horario);
+        formData.append('duracao', duracao);
+        formData.append('observacoes', observacoes);
 
-        localStorage.setItem('reservasSportRent', JSON.stringify(reservasSalvas));
+        try {
+            const resposta = await fetch('api/reservar.php', {
+                method: 'POST',
+                body: formData
+            });
 
-        reservaMessage.textContent = 'Reserva realizada com sucesso!';
-        reservaMessage.className = 'reserva-message success';
+            const dados = await resposta.json();
 
-        setTimeout(() => {
-            reservaForm.reset();
-            closeReservaModal();
-        }, 1500);
+            if(dados.status === 'sucesso'){
+                reservaMessage.textContent = dados.mensagem;
+                reservaMessage.className = 'reserva-message success';
+
+                setTimeout(() => {
+                    reservaForm.reset();
+                    closeReservaModal();
+                }, 1500);
+            }else{
+                reservaMessage.textContent = dados.mensagem;
+                reservaMessage.className = 'reserva-message error';
+            }
+        } catch (erro) {
+            reservaMessage.textContent = 'Erro ao conectar com o servidor.';
+            reservaMessage.className = 'reserva-message error';
+            console.error(erro);
+        }
     });
 }
 
@@ -360,3 +378,89 @@ if(buscaDataInput){
 
 configurarDatasMinimas();
 preencherDatasRapidas();
+
+// =======================
+// BANCO DE DADOS - CADASTRO, LOGIN E CONTATO
+// =======================
+
+async function enviarParaAPI(url, formData) {
+    const resposta = await fetch(url, {
+        method: "POST",
+        body: formData
+    });
+
+    return await resposta.json();
+}
+
+// CADASTRO
+const registerForm = document.getElementById("register-form");
+
+if (registerForm) {
+    registerForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(registerForm);
+
+        try {
+            const dados = await enviarParaAPI("api/cadastrar.php", formData);
+
+            alert(dados.mensagem);
+
+            if (dados.status === "sucesso") {
+                registerForm.reset();
+            }
+        } catch (erro) {
+            alert("Erro ao conectar com o servidor.");
+            console.error(erro);
+        }
+    });
+}
+
+// LOGIN
+const loginForm = document.getElementById("login-form");
+
+if (loginForm) {
+    loginForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(loginForm);
+
+        try {
+            const dados = await enviarParaAPI("api/login.php", formData);
+
+            alert(dados.mensagem);
+
+            if (dados.status === "sucesso") {
+                localStorage.setItem("usuario", JSON.stringify(dados.usuario));
+                console.log("Usuário logado:", dados.usuario);
+            }
+        } catch (erro) {
+            alert("Erro ao conectar com o servidor.");
+            console.error(erro);
+        }
+    });
+}
+
+// CONTATO
+const contatoForm = document.getElementById("contato-form");
+
+if (contatoForm) {
+    contatoForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(contatoForm);
+
+        try {
+            const dados = await enviarParaAPI("api/contato.php", formData);
+
+            alert(dados.mensagem);
+
+            if (dados.status === "sucesso") {
+                contatoForm.reset();
+            }
+        } catch (erro) {
+            alert("Erro ao conectar com o servidor.");
+            console.error(erro);
+        }
+    });
+}
