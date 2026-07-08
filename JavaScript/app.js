@@ -292,9 +292,12 @@ const inscricaoCampeonato = document.getElementById('inscricao-campeonato');
 const inscricaoModalidade = document.getElementById('inscricao-modalidade');
 const inscricaoLocal = document.getElementById('inscricao-local');
 const inscricaoVagas = document.getElementById('inscricao-vagas');
+let campeonatoSelecionadoNome = null;
 
 function openInscricaoModal(button){
     if(!inscricaoModal) return;
+
+    campeonatoSelecionadoNome = button.dataset.campeonato;
 
     if(inscricaoCampeonato){
         inscricaoCampeonato.textContent = button.dataset.campeonato || 'Campeonato';
@@ -348,25 +351,57 @@ if(inscricaoOverlay){
 }
 
 if(inscricaoForm){
-    inscricaoForm.addEventListener('submit', function(event){
+    inscricaoForm.addEventListener('submit', async function(event){
         event.preventDefault();
 
         const nome = document.getElementById('inscricao-nome').value.trim();
         const telefone = document.getElementById('inscricao-telefone').value.trim();
+        const email = document.getElementById('inscricao-email').value.trim();
 
-        if(!nome || !telefone){
-            inscricaoMessage.textContent = 'Preencha nome e telefone para confirmar a inscrição.';
+        if(!nome || !telefone || !email){
+            inscricaoMessage.textContent = 'Preencha todos os campos.';
             inscricaoMessage.className = 'reserva-message error';
             return;
         }
 
-        inscricaoMessage.textContent = 'Inscrição confirmada com sucesso!';
-        inscricaoMessage.className = 'reserva-message success';
+        if(!campeonatoSelecionadoNome){
+            inscricaoMessage.textContent = 'Erro: nenhum campeonato selecionado.';
+            inscricaoMessage.className = 'reserva-message error';
+            return;
+        }
 
-        setTimeout(() => {
-            inscricaoForm.reset();
-            closeInscricaoModal();
-        }, 1200);
+        const formData = new FormData();
+
+        formData.append('campeonato_nome', campeonatoSelecionadoNome);
+        formData.append('nome_responsavel', nome);
+        formData.append('telefone', telefone);
+        formData.append('email', email);
+
+        try {
+            const resposta = await fetch('api/inscrever_campeonato.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            const dados = await resposta.json();
+
+            if(dados.status === 'sucesso'){
+                inscricaoMessage.textContent = dados.mensagem;
+                inscricaoMessage.className = 'reserva-message success';
+
+                setTimeout(() => {
+                    inscricaoForm.reset();
+                    closeInscricaoModal();
+                }, 1500);
+            }else{
+                inscricaoMessage.textContent = dados.mensagem;
+                inscricaoMessage.className = 'reserva-message error';
+            }
+        } catch (erro) {
+            inscricaoMessage.textContent = 'Erro ao conectar com o servidor.';
+            inscricaoMessage.className = 'reserva-message error';
+            console.error(erro);
+        }
     });
 }
 
@@ -411,7 +446,7 @@ if(criarCampeonatoOverlay){
 }
 
 if(criarCampeonatoForm){
-    criarCampeonatoForm.addEventListener('submit', function(event){
+    criarCampeonatoForm.addEventListener('submit', async function(event){
         event.preventDefault();
 
         const nome = document.getElementById('criar-campeonato-nome').value.trim();
@@ -422,19 +457,72 @@ if(criarCampeonatoForm){
         const premiacao = document.getElementById('criar-campeonato-premiacao').value.trim();
         const vagas = document.getElementById('criar-campeonato-vagas').value.trim();
 
-        if(!nome || !modalidade || !local || !dataInicio || !dataFim || !premiacao || !vagas){
-            criarCampeonatoMessage.textContent = 'Preencha todos os campos obrigatórios.';
-            criarCampeonatoMessage.className = 'reserva-message error';
+        const campos = {
+            nome,
+            modalidade,
+            local,
+            dataInicio,
+            dataFim,
+            premiacao,
+            vagas
+        };
+
+        console.log("Valores do campeonato:", campos);
+
+        const camposVazios = [];
+
+        if(!nome) camposVazios.push("Nome do campeonato");
+        if(!modalidade) camposVazios.push("Modalidade");
+        if(!local) camposVazios.push("Local");
+        if(!dataInicio) camposVazios.push("Data de início");
+        if(!dataFim) camposVazios.push("Data de término");
+        if(!premiacao) camposVazios.push("Premiação");
+        if(!vagas) camposVazios.push("Número de vagas");
+
+        if(camposVazios.length > 0){
+            criarCampeonatoMessage.textContent = "Faltando: " + camposVazios.join(", ");
+            criarCampeonatoMessage.className = "reserva-message error";
             return;
         }
 
-        criarCampeonatoMessage.textContent = 'Campeonato criado com sucesso!';
-        criarCampeonatoMessage.className = 'reserva-message success';
+        const formData = new FormData();
 
-        setTimeout(() => {
-            criarCampeonatoForm.reset();
-            closeCriarCampeonatoModal();
-        }, 1200);
+        formData.append('nome', nome);
+        formData.append('modalidade', modalidade);
+        formData.append('localizacao', local);
+        formData.append('data_inicio', dataInicio);
+        formData.append('data_fim', dataFim);
+        formData.append('premio', premiacao);
+        formData.append('vagas_total', vagas);
+
+        try {
+            const resposta = await fetch('api/criar_campeonato.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            const textoResposta = await resposta.text();
+            console.log("Resposta do PHP:", textoResposta);
+
+            const dados = JSON.parse(textoResposta);
+
+            if(dados.status === 'sucesso'){
+                criarCampeonatoMessage.textContent = dados.mensagem;
+                criarCampeonatoMessage.className = 'reserva-message success';
+
+                setTimeout(() => {
+                    criarCampeonatoForm.reset();
+                    closeCriarCampeonatoModal();
+                }, 1500);
+            }else{
+                criarCampeonatoMessage.textContent = dados.mensagem;
+                criarCampeonatoMessage.className = 'reserva-message error';
+            }
+        } catch (erro) {
+            criarCampeonatoMessage.textContent = 'Erro ao conectar com o servidor.';
+            criarCampeonatoMessage.className = 'reserva-message error';
+            console.error(erro);
+        }
     });
 }
 
