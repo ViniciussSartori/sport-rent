@@ -1,614 +1,1196 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Sport Rent - encontre quadras, reserve horários e participe de campeonatos."
+    >
+
     <title>Sport Rent</title>
 
-    <link rel="icon" href="Assets/icon.png">
+    <link
+        rel="icon"
+        type="image/png"
+        href="Assets/icon.png"
+    >
 
-    <link rel="stylesheet" href="CSS/style.css">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-    <!-- Fonte -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/style.css"
+    >
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="logo">
-            <h1>SPORT <span>RENT</span></h1>
-        </div>
+<header class="navbar">
 
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#quadras">Buscar Quadras</a></li>
-                <li><a href="#campeonatos">Campeonatos</a></li>
-                <li><a href="#funcionamento">Como funciona</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>  
+    <div class="logo">
+        <h1>
+            SPORT <span>RENT</span>
+        </h1>
+    </div>
 
-        <div class="buttons">
-            <button class="btn-login">Entrar</button>
-            <button class="btn-primary">Cadastrar</button>
-        </div>
-    </header>
+    <nav aria-label="Navegação principal">
+        <ul>
+            <li>
+                <a href="#inicio">Início</a>
+            </li>
 
-    <!-- HERO -->
-    <section class="hero" id="inicio">
+            <li>
+                <a href="#quadras">Buscar Quadras</a>
+            </li>
+
+            <li>
+                <a href="#campeonatos">Campeonatos</a>
+            </li>
+
+            <li>
+                <a href="#funcionamento">Como funciona</a>
+            </li>
+
+            <li>
+                <a href="#contato">Contato</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="buttons">
+        <button
+            class="btn-login"
+            type="button"
+        >
+            Entrar
+        </button>
+
+        <button
+            class="btn-primary"
+            type="button"
+        >
+            Cadastrar
+        </button>
+    </div>
+
+</header>
+
+<main>
+
+    <!-- INÍCIO -->
+    <section
+        class="hero"
+        id="inicio"
+    >
         <div class="hero-text">
-            <span class="tag">Reserve quadras com facilidade</span>
+
+            <span class="tag">
+                Reserve quadras com facilidade
+            </span>
 
             <h2>
                 O esporte conecta.<br>
-                <strong>Nós facilitamos.</strong>
+
+                <strong>
+                    Nós facilitamos.
+                </strong>
             </h2>
 
             <p>
                 Encontre quadras, campos e ginásios próximos de você.
-                Reserve horários, participe de campeonatos e viva o esporte
-                sem complicação.
+                Reserve horários, participe de campeonatos e viva o
+                esporte sem complicação.
             </p>
 
             <div class="hero-buttons">
-                <a href="#buscar-quadras" class="btn-primary">Reservar agora</a>
-                <a href="#campeonatos" class="btn-secondary">Ver campeonatos</a>
+
+                <a
+                    href="#buscar-quadras"
+                    class="btn-primary"
+                >
+                    Reservar agora
+                </a>
+
+                <a
+                    href="#campeonatos"
+                    class="btn-secondary"
+                >
+                    Ver campeonatos
+                </a>
+
             </div>
+
         </div>
     </section>
 
-    <!-- BUSCA -->
-    <section class="search-box" id="buscar-quadras">
+    <!-- BUSCA DE QUADRAS -->
+    <section
+        class="search-box"
+        id="buscar-quadras"
+    >
         <div class="search-item">
-            <label>Cidade ou bairro</label>
-            <input type="text" id="busca-cidade" placeholder="Ex: São Paulo">
+
+            <label for="busca-cidade">
+                Cidade ou bairro
+            </label>
+
+            <input
+                type="text"
+                id="busca-cidade"
+                name="cidade"
+                placeholder="Ex: Monte Carmelo"
+            >
+
         </div>
 
         <div class="search-item">
-            <label>Modalidade</label>
-            <select id="busca-modalidade">
-                <option>Futebol society</option>
-                <option>Futsal</option>
-                <option>Vôlei</option>
-                <option>Basquete</option>
-                <option>Tênis</option>
+
+            <label for="busca-modalidade">
+                Modalidade
+            </label>
+
+            <select
+                id="busca-modalidade"
+                name="modalidade"
+            >
+                <option value="">
+                    Todas as modalidades
+                </option>
+
+                <option value="Futebol">
+                    Futebol
+                </option>
+
+                <option value="Futebol society">
+                    Futebol society
+                </option>
+
+                <option value="Futsal">
+                    Futsal
+                </option>
+
+                <option value="Vôlei">
+                    Vôlei
+                </option>
+
+                <option value="Basquete">
+                    Basquete
+                </option>
+
+                <option value="Tênis">
+                    Tênis
+                </option>
             </select>
+
         </div>
 
         <div class="search-item">
-            <label>Data</label>
-            <input type="date" id="busca-data">
+
+            <label for="busca-data">
+                Data
+            </label>
+
+            <input
+                type="date"
+                id="busca-data"
+                name="data"
+            >
+
         </div>
 
         <div class="search-item">
-            <label>Período</label>
-            <select id="busca-periodo">
-                <option value="">Qualquer horário</option>
-                <option value="manha">Manhã</option>
-                <option value="tarde">Tarde</option>
-                <option value="noite">Noite</option>
+
+            <label for="busca-periodo">
+                Período
+            </label>
+
+            <select
+                id="busca-periodo"
+                name="periodo"
+            >
+                <option value="">
+                    Qualquer horário
+                </option>
+
+                <option value="manha">
+                    Manhã
+                </option>
+
+                <option value="tarde">
+                    Tarde
+                </option>
+
+                <option value="noite">
+                    Noite
+                </option>
             </select>
+
         </div>
 
-        <button class="btn-primary">Buscar</button>
+        <button
+            class="btn-primary"
+            id="buscar-quadras-button"
+            type="button"
+        >
+            Buscar
+        </button>
+
     </section>
 
-    <!-- QUADRAS -->
-    <section class="courts" id="quadras">
+    <!-- QUADRAS VINDAS DO BANCO -->
+    <section
+        class="courts"
+        id="quadras"
+    >
         <div class="section-title">
-            <span>Quadras disponíveis</span>
-            <h2>Espaços em destaque</h2>
-            <p>Escolha o espaço ideal para jogar com seus amigos.</p>
-        </div>
 
-        <div class="cards">
+            <span>
+                Quadras disponíveis
+            </span>
 
-            <div class="card">
-                <img src="Assets/quadra1.jpg" alt="Quadra de futebol society">
+            <h2>
+                Espaços em destaque
+            </h2>
 
-                <div class="card-content">
-                    <div class="card-top">
-                        <h3>Arena Society</h3>
-                        <span class="badge">Futebol</span>
-                    </div>
-
-                    <p>São Paulo - SP</p>
-
-                    <div class="card-footer">
-                        <strong>R$ 120,00 / hora</strong>
-                        <button 
-                            class="btn-reservar"
-                            data-quadra-id="1"
-                            data-quadra="Arena Society"
-                            data-modalidade="Futebol"
-                            data-local="São Paulo - SP"
-                            data-preco="R$ 120,00 / hora">
-                            Reservar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Assets/quadra2.jpg" alt="Ginásio esportivo">
-
-                <div class="card-content">
-                    <div class="card-top">
-                        <h3>Ginásio Central</h3>
-                        <span class="badge">Futsal</span>
-                    </div>
-
-                    <p>São Paulo - SP</p>
-
-                    <div class="card-footer">
-                        <strong>R$ 90,00 / hora</strong>
-                        <button 
-                            class="btn-reservar"
-                            data-quadra-id="2"
-                            data-quadra="Ginásio Central"
-                            data-modalidade="Futsal"
-                            data-local="São Paulo - SP"
-                            data-preco="R$ 90,00 / hora">
-                            Reservar
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Assets/quadra3.png" alt="Quadra poliesportiva">
-
-                <div class="card-content">
-                    <div class="card-top">
-                        <h3>Clube Esportivo</h3>
-                        <span class="badge">Futsal</span>
-                    </div>
-
-                    <p>Campinas - SP</p>
-
-                    <div class="card-footer">
-                        <strong>R$ 100,00 / hora</strong>
-                        <button 
-                            class="btn-reservar"
-                            data-quadra-id="3"
-                            data-quadra="Clube Esportivo"
-                            data-modalidade="Futsal"
-                            data-local="Campinas - SP"
-                            data-preco="R$ 100,00 / hora">
-                            Reservar
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <p>
+                Escolha o espaço ideal para jogar com seus amigos.
+            </p>
 
         </div>
+
+        <div
+            class="cards"
+            id="quadras-destaque-lista"
+            aria-live="polite"
+        ></div>
+
     </section>
 
-    <!-- CAMPEONATOS -->
-    <section class="campeonatos" id="campeonatos">
+    <!-- CAMPEONATOS VINDOS DO BANCO -->
+    <section
+        class="campeonatos"
+        id="campeonatos"
+    >
         <div class="section-title">
-            <span>Competições abertas</span>
-            <h2>Campeonatos em destaque</h2>
-            <p>Participe de torneios e competições com jogadores da sua região.</p>
+
+            <span>
+                Competições abertas
+            </span>
+
+            <h2>
+                Campeonatos em destaque
+            </h2>
+
+            <p>
+                Participe de torneios e competições com jogadores
+                da sua região.
+            </p>
+
         </div>
 
         <div class="campeonatos-buttons">
-            <button class="btn-secondary">Ver todos</button>
-            <button class="btn-primary">Criar campeonato</button>
+
+            <button
+                class="btn-secondary"
+                type="button"
+            >
+                Ver todos
+            </button>
+
+            <button
+                class="btn-primary"
+                type="button"
+            >
+                Criar campeonato
+            </button>
+
         </div>
 
-        <div class="cards">
-            <div class="card">
-                <img src="Assets/quadra1.jpg" alt="Campeonato de Futebol">
-
-                <div class="card-content">
-                    <div class="card-top">
-                        <h3>Copa Região 2024</h3>
-                        <span class="badge">Futebol</span>
-                    </div>
-
-                    <div class="card-info">
-                        <p><strong>Premiação:</strong> <span class="prize">R$ 5.000</span></p>
-                        <p>🗓 12 de Junho - 30 de Junho</p>
-                        <p>📍 São Paulo - SP</p>
-                    </div>
-
-                    <div class="vagas-info">
-                        <span>8 de 16 vagas</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 50%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <button class="btn-inscrever" data-campeonato="Copa Região 2024" data-modalidade="Futebol" data-local="São Paulo - SP" data-vagas="8 de 16 vagas">Inscrever-se</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Assets/quadra2.jpg" alt="Campeonato de Futsal">
-
-                <div class="card-content">
-                    <div class="card-top">
-                        <h3>Campeonato Futsal City</h3>
-                        <span class="badge">Futsal</span>
-                    </div>
-
-                    <div class="card-info">
-                        <p><strong>Premiação:</strong> <span class="prize">R$ 3.500</span></p>
-                        <p>🗓 15 de Junho - 25 de Junho</p>
-                        <p>📍 Campinas - SP</p>
-                    </div>
-
-                    <div class="vagas-info">
-                        <span>12 de 20 vagas</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 60%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <button class="btn-inscrever" data-campeonato="Campeonato Futsal City" data-modalidade="Futsal" data-local="Campinas - SP" data-vagas="12 de 20 vagas">Inscrever-se</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://placehold.co/400x220/111/39ff14?text=Campeonato" alt="Campeonato de Vôlei">
-
-                <div class="card-content">
-                    <div class="card-top">
-                        <h3>Open de Vôlei Regional</h3>
-                        <span class="badge">Vôlei</span>
-                    </div>
-
-                    <div class="card-info">
-                        <p><strong>Premiação:</strong> <span class="prize">R$ 4.200</span></p>
-                        <p>🗓 18 de Junho - 28 de Junho</p>
-                        <p>📍 Ribeirão Preto - SP</p>
-                    </div>
-
-                    <div class="vagas-info">
-                        <span>5 de 12 vagas</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 42%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <button class="btn-inscrever" data-campeonato="Open de Vôlei Regional" data-modalidade="Vôlei" data-local="Ribeirão Preto - SP" data-vagas="5 de 12 vagas">Inscrever-se</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div
+            class="cards"
+            id="campeonatos-destaque-lista"
+            aria-live="polite"
+        ></div>
 
         <div class="torneios-abertos">
-            <h3>Torneios abertos para inscrição</h3>
-            
-            <div class="torneios-table">
+
+            <h3>
+                Torneios abertos para inscrição
+            </h3>
+
+            <div
+                class="torneios-table"
+                id="torneios-lista"
+            >
                 <div class="torneios-header">
-                    <div class="header-col">Torneio</div>
-                    <div class="header-col">Modalidade</div>
-                    <div class="header-col">Data</div>
-                    <div class="header-col">Local</div>
-                    <div class="header-col">Vagas</div>
-                    <div class="header-col">Ação</div>
-                </div>
 
-                <div class="torneios-row">
-                    <div class="table-col">Champion League Futsal</div>
-                    <div class="table-col"><span class="badge">Futsal</span></div>
-                    <div class="table-col">20 Jun</div>
-                    <div class="table-col">São Paulo - SP</div>
-                    <div class="table-col">4 / 24</div>
-                    <div class="table-col"><button class="btn-table btn-inscrever" data-campeonato="Champion League Futsal" data-modalidade="Futsal" data-local="São Paulo - SP" data-vagas="4 / 24">Inscrever-se</button></div>
-                </div>
+                    <div class="header-col">
+                        Torneio
+                    </div>
 
-                <div class="torneios-row">
-                    <div class="table-col">Campeonato Municipal Futebol</div>
-                    <div class="table-col"><span class="badge">Futebol</span></div>
-                    <div class="table-col">25 Jun</div>
-                    <div class="table-col">Santos - SP</div>
-                    <div class="table-col">6 / 16</div>
-                    <div class="table-col"><button class="btn-table btn-inscrever" data-campeonato="Campeonato Municipal Futebol" data-modalidade="Futebol" data-local="Santos - SP" data-vagas="6 / 16">Inscrever-se</button></div>
-                </div>
+                    <div class="header-col">
+                        Modalidade
+                    </div>
 
-                <div class="torneios-row">
-                    <div class="table-col">Torneio de Vôlei Indoor</div>
-                    <div class="table-col"><span class="badge">Vôlei</span></div>
-                    <div class="table-col">22 Jun</div>
-                    <div class="table-col">Sorocaba - SP</div>
-                    <div class="table-col">10 / 18</div>
-                    <div class="table-col"><button class="btn-table btn-inscrever" data-campeonato="Torneio de Vôlei Indoor" data-modalidade="Vôlei" data-local="Sorocaba - SP" data-vagas="10 / 18">Inscrever-se</button></div>
-                </div>
+                    <div class="header-col">
+                        Data
+                    </div>
 
-                <div class="torneios-row">
-                    <div class="table-col">Liga Amadora de Basquete</div>
-                    <div class="table-col"><span class="badge">Basquete</span></div>
-                    <div class="table-col">28 Jun</div>
-                    <div class="table-col">Piracicaba - SP</div>
-                    <div class="table-col">3 / 12</div>
-                    <div class="table-col"><button class="btn-table btn-inscrever" data-campeonato="Liga Amadora de Basquete" data-modalidade="Basquete" data-local="Piracicaba - SP" data-vagas="3 / 12">Inscrever-se</button></div>
+                    <div class="header-col">
+                        Local / Cidade
+                    </div>
+
+                    <div class="header-col">
+                        Vagas
+                    </div>
+
+                    <div class="header-col">
+                        Ação
+                    </div>
+
                 </div>
             </div>
+
         </div>
+
     </section>
 
     <!-- COMO FUNCIONA -->
-    <section class="how-it-works" id="funcionamento">
+    <section
+        class="how-it-works"
+        id="funcionamento"
+    >
         <div class="section-title">
-            <span>Processo simples</span>
-            <h2>Como funciona</h2>
-            <p>Em poucos passos você encontra e reserva seu espaço esportivo.</p>
+
+            <span>
+                Processo simples
+            </span>
+
+            <h2>
+                Como funciona
+            </h2>
+
+            <p>
+                Em poucos passos você encontra e reserva
+                seu espaço esportivo.
+            </p>
+
         </div>
 
         <div class="steps">
+
             <div class="step">
-                <div class="step-number">01</div>
-                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <i
+                    class="fa-solid fa-magnifying-glass"
+                    aria-hidden="true"
+                ></i>
+
                 <h3>Busque</h3>
-                <p>Escolha cidade, modalidade, data e horário.</p>
+
+                <p>
+                    Escolha cidade, modalidade, data e horário.
+                </p>
+
             </div>
 
             <div class="step-connector"></div>
 
             <div class="step">
-                <div class="step-number">02</div>
-                <i class="fa-solid fa-list-check"></i>
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <i
+                    class="fa-solid fa-list-check"
+                    aria-hidden="true"
+                ></i>
+
                 <h3>Compare</h3>
-                <p>Veja preços, locais e avaliações disponíveis.</p>
+
+                <p>
+                    Veja preços, locais e avaliações disponíveis.
+                </p>
+
             </div>
 
             <div class="step-connector"></div>
 
             <div class="step">
-                <div class="step-number">03</div>
-                <i class="fa-solid fa-credit-card"></i>
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <i
+                    class="fa-solid fa-credit-card"
+                    aria-hidden="true"
+                ></i>
+
                 <h3>Reserve</h3>
-                <p>Pagamento rápido, seguro e sem complicação.</p>
+
+                <p>
+                    Pagamento rápido, seguro e sem complicação.
+                </p>
+
             </div>
 
             <div class="step-connector"></div>
 
             <div class="step">
-                <div class="step-number">04</div>
-                <i class="fa-solid fa-trophy"></i>
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <i
+                    class="fa-solid fa-trophy"
+                    aria-hidden="true"
+                ></i>
+
                 <h3>Jogue</h3>
-                <p>Apareça na hora marcada e aproveite o esporte.</p>
+
+                <p>
+                    Apareça na hora marcada e aproveite o esporte.
+                </p>
+
             </div>
+
         </div>
+
     </section>
 
+    <!-- CONTATO -->
+    <section
+        class="contato-container"
+        id="contato"
+    >
 
-    <!-- Contato -->
-     <!-- CONTATO -->
-    <main class="contato-container">
+        <div class="contato-info">
 
-        <!-- INFORMAÇÕES -->
-        <section class="contato-info" id="contato">
-            <h2>Entre em contato</h2>
-            <p>Estamos aqui para ajudar. Fale conosco!</p>
+            <h2>
+                Entre em contato
+            </h2>
+
+            <p>
+                Estamos aqui para ajudar. Fale conosco!
+            </p>
 
             <div class="info-item">
-                <i class="fa-regular fa-envelope"></i>
+
+                <i
+                    class="fa-regular fa-envelope"
+                    aria-hidden="true"
+                ></i>
+
                 <div>
                     <h3>E-mail</h3>
-                    <p>contato@sportrent.com.br</p>
+
+                    <p>
+                        <a href="mailto:contato@sportrent.com.br">
+                            contato@sportrent.com.br
+                        </a>
+                    </p>
                 </div>
+
             </div>
 
             <div class="info-item">
-                <i class="fa-brands fa-whatsapp"></i>
+
+                <i
+                    class="fa-brands fa-whatsapp"
+                    aria-hidden="true"
+                ></i>
+
                 <div>
-                    <h3>Telefone / WhatsApp</h3>
-                    <p>(14) 99890-9909</p>
+                    <h3>
+                        Telefone / WhatsApp
+                    </h3>
+
+                    <p>
+                        <a href="tel:+5514998909909">
+                            (14) 99890-9909
+                        </a>
+                    </p>
                 </div>
+
             </div>
 
             <div class="info-item">
-                <i class="fa-solid fa-location-dot"></i>
+
+                <i
+                    class="fa-solid fa-location-dot"
+                    aria-hidden="true"
+                ></i>
+
                 <div>
                     <h3>Endereço</h3>
+
                     <p>
-                        Rua Das Éricas 190 - Cidade Jardim<br>
+                        Rua das Éricas, 190 - Cidade Jardim<br>
                         Monte Carmelo - MG, 38500-000
                     </p>
                 </div>
+
             </div>
 
             <div class="info-item">
-                <i class="fa-regular fa-clock"></i>
+
+                <i
+                    class="fa-regular fa-clock"
+                    aria-hidden="true"
+                ></i>
+
                 <div>
-                    <h3>Horário de atendimento</h3>
+                    <h3>
+                        Horário de atendimento
+                    </h3>
+
                     <p>
                         Seg a Sex: 8h às 18h<br>
                         Sáb: 8h às 12h
                     </p>
                 </div>
+
             </div>
-        </section>
 
-        <!-- FORMULÁRIO -->
-        <section class="contato-form">
-            <h2>Envie uma mensagem</h2>
+        </div>
 
-            <form id="contato-form">
+        <div class="contato-form">
+
+            <h2>
+                Envie uma mensagem
+            </h2>
+
+            <form
+                id="contato-form"
+                method="post"
+            >
                 <div class="form-linha">
+
                     <div class="campo">
-                        <label for="nome">Nome</label>
-                        <input type="text" id="nome" name="nome" placeholder="Seu nome">
+
+                        <label for="nome">
+                            Nome
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Seu nome"
+                            autocomplete="name"
+                            minlength="2"
+                            maxlength="100"
+                            required
+                        >
+
                     </div>
 
                     <div class="campo">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" placeholder="Seu e-mail">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Seu e-mail"
+                            autocomplete="email"
+                            maxlength="150"
+                            required
+                        >
+
                     </div>
+
                 </div>
 
                 <div class="campo">
-                    <label for="assunto">Assunto</label>
-                    <select id="assunto" name="assunto">
-                        <option value="">Selecione o assunto</option>
-                        <option value="Reserva de quadra">Reserva de quadra</option>
-                        <option value="Campeonatos">Campeonatos</option>
-                        <option value="Problemas com pagamento">Problemas com pagamento</option>
-                        <option value="Outro assunto">Outro assunto</option>
+
+                    <label for="assunto">
+                        Assunto
+                    </label>
+
+                    <select
+                        id="assunto"
+                        name="assunto"
+                        required
+                    >
+                        <option value="">
+                            Selecione o assunto
+                        </option>
+
+                        <option value="Reserva de quadra">
+                            Reserva de quadra
+                        </option>
+
+                        <option value="Campeonatos">
+                            Campeonatos
+                        </option>
+
+                        <option value="Problemas com pagamento">
+                            Problemas com pagamento
+                        </option>
+
+                        <option value="Outro assunto">
+                            Outro assunto
+                        </option>
                     </select>
+
                 </div>
 
                 <div class="campo">
-                    <label for="mensagem">Mensagem</label>
-                    <textarea id="mensagem" name="mensagem" placeholder="Digite sua mensagem..."></textarea>
+
+                    <label for="mensagem">
+                        Mensagem
+                    </label>
+
+                    <textarea
+                        id="mensagem"
+                        name="mensagem"
+                        placeholder="Digite sua mensagem..."
+                        minlength="5"
+                        maxlength="1000"
+                        required
+                    ></textarea>
+
                 </div>
 
-                <button type="submit">Enviar mensagem</button>
+                <button type="submit">
+                    Enviar mensagem
+                </button>
+
             </form>
-        </section>
 
-        <!-- LOCALIZAÇÃO E REDES -->
-        <section class="contato-local">
-            <h2>Onde estamos</h2>
+        </div>
 
-            <div class="mapa">
-                <i class="fa-solid fa-location-dot"></i>
+        <div class="contato-local">
+
+            <h2>
+                Onde estamos
+            </h2>
+
+            <div
+                class="mapa"
+                aria-label="Localização da Sport Rent"
+            >
+                <i
+                    class="fa-solid fa-location-dot"
+                    aria-hidden="true"
+                ></i>
             </div>
 
             <div class="redes-box">
-                <h2>Siga-nos nas redes sociais</h2>
-                <p>Acompanhe novidades, promoções e eventos.</p>
+
+                <h2>
+                    Siga-nos nas redes sociais
+                </h2>
+
+                <p>
+                    Acompanhe novidades, promoções e eventos.
+                </p>
 
                 <div class="redes">
-                    <a href="#"><i class="fa-brands fa-instagram instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook-f facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-youtube youtube"></i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok tiktok"></i></a>
-                </div>
-            </div>
-        </section>
-    </main>
 
-    <!-- MODAL DE LOGIN E CADASTRO -->
-    <div class="modal modal--hidden" id="auth-modal">
-        <div class="modal__overlay"></div>
-        <div class="modal__container">
-            <div class="modal__header">
-                <div class="modal__tab-list" role="tablist" aria-label="Authentication tabs">
-                    <button class="modal__tab modal__tab--active" type="button" role="tab" aria-selected="true" aria-controls="login-panel">Entrar</button>
-                    <button class="modal__tab" type="button" role="tab" aria-selected="false" aria-controls="register-panel">Cadastrar</button>
+                    <a
+                        href="#"
+                        aria-label="Instagram"
+                    >
+                        <i
+                            class="fa-brands fa-instagram instagram"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="Facebook"
+                    >
+                        <i
+                            class="fa-brands fa-facebook-f facebook"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="YouTube"
+                    >
+                        <i
+                            class="fa-brands fa-youtube youtube"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="TikTok"
+                    >
+                        <i
+                            class="fa-brands fa-tiktok tiktok"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
                 </div>
-                <button class="modal__close-button" type="button" aria-label="Close modal">×</button>
+
             </div>
 
-            <div class="modal__body">
-                <div class="modal__panel modal__panel--active" id="login-panel" role="tabpanel" aria-labelledby="login-tab">
-                    <form class="modal__form" id="login-form" method="post">
-                        <div class="modal__field">
-                            <label class="modal__label" for="login-email">E-mail</label>
-                            <input class="modal__input" type="email" id="login-email" name="email" placeholder="Digite seu e-mail">
-                        </div>
-                        <div class="modal__field">
-                            <label class="modal__label" for="login-password">Senha</label>
-                            <input class="modal__input" type="password" id="login-password" name="password" placeholder="Digite sua senha">
-                        </div>
-                        <button class="modal__button modal__button--primary" type="submit">Entrar</button>
-                    </form>
-                </div>
-
-                <div class="modal__panel" id="register-panel" role="tabpanel" aria-labelledby="register-tab" hidden>
-                    <form class="modal__form" id="register-form" method="post">
-                        <div class="modal__field">
-                            <label class="modal__label" for="register-name">Nome</label>
-                            <input class="modal__input" type="text" id="register-name" name="name" placeholder="Digite seu nome">
-                        </div>
-                        <div class="modal__field">
-                            <label class="modal__label" for="register-email">E-mail</label>
-                            <input class="modal__input" type="email" id="register-email" name="email" placeholder="Digite seu e-mail">
-                        </div>
-                        <div class="modal__field">
-                            <label class="modal__label" for="register-password">Senha</label>
-                            <input class="modal__input" type="password" id="register-password" name="password" placeholder="Crie uma senha">
-                        </div>
-                        <div class="modal__field">
-                            <label class="modal__label" for="register-confirm-password">Confirmar senha</label>
-                            <input class="modal__input" type="password" id="register-confirm-password" name="confirmPassword" placeholder="Confirme a senha">
-                        </div>
-                        <button class="modal__button modal__button--primary" type="submit">Cadastrar</button>
-                    </form>
-                </div>
-            </div>
         </div>
-    </div>
 
-    <!-- MODAL DE RESERVA -->
-    <div class="modal modal--hidden" id="reserva-modal">
-    <div class="modal__overlay" id="reserva-overlay"></div>
+    </section>
 
-    <div class="modal__container modal__container--reserva">
-        <div class="modal__header modal__header--simple">
-            <h2>Reservar quadra</h2>
-            <button class="modal__close-button" id="reserva-close" type="button">×</button>
+</main>
+
+<!-- LOGIN E CADASTRO -->
+<div
+    class="modal modal--hidden"
+    id="auth-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Entrar ou cadastrar"
+>
+    <div class="modal__overlay"></div>
+
+    <div class="modal__container">
+
+        <div class="modal__header">
+
+            <div
+                class="modal__tab-list"
+                role="tablist"
+                aria-label="Autenticação"
+            >
+                <button
+                    class="modal__tab modal__tab--active"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="login-panel"
+                >
+                    Entrar
+                </button>
+
+                <button
+                    class="modal__tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="register-panel"
+                >
+                    Cadastrar
+                </button>
+            </div>
+
+            <button
+                class="modal__close-button"
+                type="button"
+                aria-label="Fechar"
+            >
+                &times;
+            </button>
+
         </div>
 
         <div class="modal__body">
-            <div class="reserva-resumo">
-                <h3 id="reserva-quadra">Quadra selecionada</h3>
 
-                <div class="reserva-detalhes">
-                    <p><strong>Modalidade:</strong> <span id="reserva-modalidade"></span></p>
-                    <p><strong>Local:</strong> <span id="reserva-local"></span></p>
-                    <p><strong>Preço:</strong> <span id="reserva-preco"></span></p>
-                </div>
-            </div>
+            <div
+                class="modal__panel modal__panel--active"
+                id="login-panel"
+                role="tabpanel"
+            >
+                <form
+                    class="modal__form"
+                    id="login-form"
+                    method="post"
+                >
 
-            <form class="modal__form" id="reserva-form">
-                <div class="reserva-form-grid">
                     <div class="modal__field">
-                        <label class="modal__label" for="reserva-nome">Nome completo</label>
-                        <input class="modal__input" type="text" id="reserva-nome" placeholder="Digite seu nome">
+
+                        <label
+                            class="modal__label"
+                            for="login-email"
+                        >
+                            E-mail
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="email"
+                            id="login-email"
+                            name="email"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="email"
+                            required
+                        >
+
                     </div>
 
                     <div class="modal__field">
-                        <label class="modal__label" for="reserva-telefone">Telefone</label>
-                        <input class="modal__input" type="tel" id="reserva-telefone" placeholder="(00) 00000-0000">
+
+                        <label
+                            class="modal__label"
+                            for="login-password"
+                        >
+                            Senha
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="password"
+                            id="login-password"
+                            name="password"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                    </div>
+
+                    <button
+                        class="modal__button modal__button--primary"
+                        type="submit"
+                    >
+                        Entrar
+                    </button>
+
+                </form>
+            </div>
+
+            <div
+                class="modal__panel"
+                id="register-panel"
+                role="tabpanel"
+                hidden
+            >
+                <form
+                    class="modal__form"
+                    id="register-form"
+                    method="post"
+                >
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="register-name"
+                        >
+                            Nome
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="text"
+                            id="register-name"
+                            name="name"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="register-email"
+                        >
+                            E-mail
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="email"
+                            id="register-email"
+                            name="email"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="register-password"
+                        >
+                            Senha
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="password"
+                            id="register-password"
+                            name="password"
+                            placeholder="Crie uma senha"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="register-confirm-password"
+                        >
+                            Confirmar senha
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="password"
+                            id="register-confirm-password"
+                            name="confirmPassword"
+                            placeholder="Confirme a senha"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+                    <button
+                        class="modal__button modal__button--primary"
+                        type="submit"
+                    >
+                        Cadastrar
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- RESERVA -->
+<div
+    class="modal modal--hidden"
+    id="reserva-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-reserva"
+>
+    <div
+        class="modal__overlay"
+        id="reserva-overlay"
+    ></div>
+
+    <div class="modal__container modal__container--reserva">
+
+        <div class="modal__header modal__header--simple">
+
+            <h2 id="titulo-reserva">
+                Reservar quadra
+            </h2>
+
+            <button
+                class="modal__close-button"
+                id="reserva-close"
+                type="button"
+                aria-label="Fechar reserva"
+            >
+                &times;
+            </button>
+
+        </div>
+
+        <div class="modal__body">
+
+            <div class="reserva-resumo">
+
+                <h3 id="reserva-quadra">
+                    Quadra selecionada
+                </h3>
+
+                <div class="reserva-detalhes">
+
+                    <p>
+                        <strong>Modalidade:</strong>
+                        <span id="reserva-modalidade"></span>
+                    </p>
+
+                    <p>
+                        <strong>Local / Cidade:</strong>
+                        <span id="reserva-local"></span>
+                    </p>
+
+                    <p>
+                        <strong>Preço:</strong>
+                        <span id="reserva-preco"></span>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <form
+                class="modal__form"
+                id="reserva-form"
+                method="post"
+            >
+                <div class="reserva-form-grid">
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="reserva-nome"
+                        >
+                            Nome completo
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="text"
+                            id="reserva-nome"
+                            name="nome_cliente"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="reserva-telefone"
+                        >
+                            Telefone
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="tel"
+                            id="reserva-telefone"
+                            name="telefone"
+                            placeholder="(00) 00000-0000"
+                            autocomplete="tel"
+                            maxlength="20"
+                            required
+                        >
+
                     </div>
 
                     <div class="modal__field reserva-field-full">
-                        <label class="modal__label">Escolha a data</label>
 
-                        <div class="datas-rapidas" id="datas-rapidas">
-                            <button type="button" class="data-btn" data-dias="0">
+                        <label class="modal__label">
+                            Escolha a data
+                        </label>
+
+                        <div
+                            class="datas-rapidas"
+                            id="datas-rapidas"
+                        >
+                            <button
+                                type="button"
+                                class="data-btn"
+                                data-dias="0"
+                            >
                                 <strong>Hoje</strong>
                                 <span id="data-hoje">--/--</span>
                             </button>
 
-                            <button type="button" class="data-btn" data-dias="1">
+                            <button
+                                type="button"
+                                class="data-btn"
+                                data-dias="1"
+                            >
                                 <strong>Amanhã</strong>
                                 <span id="data-amanha">--/--</span>
                             </button>
 
-                            <button type="button" class="data-btn" data-dias="2">
+                            <button
+                                type="button"
+                                class="data-btn"
+                                data-dias="2"
+                            >
                                 <strong>Depois</strong>
                                 <span id="data-depois">--/--</span>
                             </button>
                         </div>
 
                         <div class="data-calendario">
-                            <label class="modal__label" for="reserva-data">Ou escolha no calendário</label>
-                            <input class="modal__input" type="date" id="reserva-data">
+
+                            <label
+                                class="modal__label"
+                                for="reserva-data"
+                            >
+                                Ou escolha no calendário
+                            </label>
+
+                            <input
+                                class="modal__input"
+                                type="date"
+                                id="reserva-data"
+                                name="data_reserva"
+                                required
+                            >
+
                         </div>
 
-                        <p class="data-selecionada" id="data-selecionada">
+                        <p
+                            class="data-selecionada"
+                            id="data-selecionada"
+                            aria-live="polite"
+                        >
                             Nenhuma data selecionada
                         </p>
+
                     </div>
 
                     <div class="modal__field reserva-field-full">
-                        <label class="modal__label">Horários disponíveis</label>
 
-                        <div class="horarios-grid" id="horarios-grid">
+                        <label class="modal__label">
+                            Horários disponíveis
+                        </label>
+
+                        <div
+                            class="horarios-grid"
+                            id="horarios-grid"
+                        >
                             <button type="button" class="horario-btn" data-horario="08:00">
                                 08:00
                                 <small>Disponível</small>
@@ -629,9 +1211,9 @@
                                 <small>Disponível</small>
                             </button>
 
-                            <button type="button" class="horario-btn horario-btn--indisponivel" data-horario="12:00" disabled>
+                            <button type="button" class="horario-btn" data-horario="12:00">
                                 12:00
-                                <small>Ocupado</small>
+                                <small>Disponível</small>
                             </button>
 
                             <button type="button" class="horario-btn" data-horario="14:00">
@@ -644,9 +1226,9 @@
                                 <small>Disponível</small>
                             </button>
 
-                            <button type="button" class="horario-btn horario-btn--indisponivel" data-horario="16:00" disabled>
+                            <button type="button" class="horario-btn" data-horario="16:00">
                                 16:00
-                                <small>Ocupado</small>
+                                <small>Disponível</small>
                             </button>
 
                             <button type="button" class="horario-btn" data-horario="18:00">
@@ -670,257 +1252,856 @@
                             </button>
                         </div>
 
-                        <input type="hidden" id="reserva-horario">
+                        <input
+                            type="hidden"
+                            id="reserva-horario"
+                            name="horario"
+                        >
 
-                        <p class="horario-selecionado" id="horario-selecionado">
+                        <p
+                            class="horario-selecionado"
+                            id="horario-selecionado"
+                            aria-live="polite"
+                        >
                             Nenhum horário selecionado
                         </p>
+
                     </div>
 
                     <div class="modal__field reserva-field-full">
-                        <label class="modal__label" for="reserva-duracao">Duração</label>
-                        <select class="modal__input" id="reserva-duracao">
-                            <option value="">Selecione a duração</option>
-                            <option>1 hora</option>
-                            <option>2 horas</option>
-                            <option>3 horas</option>
+
+                        <label
+                            class="modal__label"
+                            for="reserva-duracao"
+                        >
+                            Duração
+                        </label>
+
+                        <select
+                            class="modal__input"
+                            id="reserva-duracao"
+                            name="duracao"
+                            required
+                        >
+                            <option value="">
+                                Selecione a duração
+                            </option>
+
+                            <option value="1">
+                                1 hora
+                            </option>
+
+                            <option value="2">
+                                2 horas
+                            </option>
+
+                            <option value="3">
+                                3 horas
+                            </option>
                         </select>
+
                     </div>
 
                     <div class="modal__field reserva-field-full">
-                        <label class="modal__label" for="reserva-observacoes">Observações</label>
-                        <textarea class="modal__input modal__input--textarea" id="reserva-observacoes" placeholder="Ex: reserva para jogo entre amigos"></textarea>
+
+                        <label
+                            class="modal__label"
+                            for="reserva-observacoes"
+                        >
+                            Observações
+                        </label>
+
+                        <textarea
+                            class="modal__input modal__input--textarea"
+                            id="reserva-observacoes"
+                            name="observacoes"
+                            placeholder="Ex: reserva para jogo entre amigos"
+                            maxlength="500"
+                        ></textarea>
+
                     </div>
+
                 </div>
 
-                <button class="modal__button modal__button--primary" type="submit">
+                <button
+                    class="modal__button modal__button--primary"
+                    type="submit"
+                >
                     Confirmar reserva
                 </button>
 
-                <p class="reserva-message" id="reserva-message"></p>
+                <p
+                    class="reserva-message"
+                    id="reserva-message"
+                    aria-live="polite"
+                ></p>
+
             </form>
+
         </div>
+
     </div>
 </div>
 
-    <!-- MODAL DE CAMPEONATOS -->
-    <div class="modal modal--hidden" id="todos-campeonatos-modal">
-        <div class="modal__overlay" id="todos-campeonatos-overlay"></div>
+<!-- TODOS OS CAMPEONATOS -->
+<div
+    class="modal modal--hidden"
+    id="todos-campeonatos-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-todos-campeonatos"
+>
+    <div
+        class="modal__overlay"
+        id="todos-campeonatos-overlay"
+    ></div>
 
-        <div class="modal__container modal__container--campeonatos">
-            <div class="modal__header modal__header--simple">
-                <h2>Todos os campeonatos</h2>
-                <button class="modal__close-button" id="todos-campeonatos-close" type="button">×</button>
-            </div>
+    <div class="modal__container modal__container--campeonatos">
 
-            <div class="modal__body">
-                <div class="cards">
-                    <div class="card">
-                        <img src="Assets/quadra1.jpg" alt="Campeonato de Futebol">
+        <div class="modal__header modal__header--simple">
 
-                        <div class="card-content">
-                            <div class="card-top">
-                                <h3>Copa Região 2024</h3>
-                                <span class="badge">Futebol</span>
-                            </div>
+            <h2 id="titulo-todos-campeonatos">
+                Todos os campeonatos
+            </h2>
 
-                            <div class="card-info">
-                                <p><strong>Premiação:</strong> <span class="prize">R$ 5.000</span></p>
-                                <p>🗓 12 de Junho - 30 de Junho</p>
-                                <p>📍 São Paulo - SP</p>
-                            </div>
+            <button
+                class="modal__close-button"
+                id="todos-campeonatos-close"
+                type="button"
+                aria-label="Fechar campeonatos"
+            >
+                &times;
+            </button>
 
-                            <div class="vagas-info">
-                                <span>8 de 16 vagas</span>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 50%;"></div>
-                                </div>
-                            </div>
+        </div>
 
-                            <div class="card-footer">
-                                <button class="btn-inscrever" data-campeonato="Copa Região 2024" data-modalidade="Futebol" data-local="São Paulo - SP" data-vagas="8 de 16 vagas">Inscrever-se</button>
-                            </div>
-                        </div>
+        <div class="modal__body">
+
+            <div
+                class="cards"
+                id="todos-campeonatos-lista"
+                aria-live="polite"
+            ></div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- CRIAR CAMPEONATO -->
+<div
+    class="modal modal--hidden"
+    id="criar-campeonato-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-criar-campeonato"
+>
+    <div
+        class="modal__overlay"
+        id="criar-campeonato-overlay"
+    ></div>
+
+    <div class="modal__container modal__container--reserva">
+
+        <div class="modal__header modal__header--simple">
+
+            <h2 id="titulo-criar-campeonato">
+                Criar campeonato
+            </h2>
+
+            <button
+                class="modal__close-button"
+                id="criar-campeonato-close"
+                type="button"
+                aria-label="Fechar criação de campeonato"
+            >
+                &times;
+            </button>
+
+        </div>
+
+        <div class="modal__body">
+
+            <form
+                class="modal__form"
+                id="criar-campeonato-form"
+                method="post"
+                enctype="multipart/form-data"
+            >
+                <div class="reserva-form-grid">
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="criar-campeonato-nome"
+                        >
+                            Nome do campeonato
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="text"
+                            id="criar-campeonato-nome"
+                            name="nome"
+                            placeholder="Digite o nome do campeonato"
+                            minlength="3"
+                            maxlength="150"
+                            required
+                        >
+
                     </div>
 
-                    <div class="card">
-                        <img src="Assets/quadra2.jpg" alt="Campeonato de Futsal">
+                    <div class="modal__field">
 
-                        <div class="card-content">
-                            <div class="card-top">
-                                <h3>Campeonato Futsal City</h3>
-                                <span class="badge">Futsal</span>
-                            </div>
+                        <label
+                            class="modal__label"
+                            for="criar-campeonato-modalidade"
+                        >
+                            Modalidade
+                        </label>
 
-                            <div class="card-info">
-                                <p><strong>Premiação:</strong> <span class="prize">R$ 3.500</span></p>
-                                <p>🗓 15 de Junho - 25 de Junho</p>
-                                <p>📍 Campinas - SP</p>
-                            </div>
+                        <select
+                            class="modal__input"
+                            id="criar-campeonato-modalidade"
+                            name="modalidade"
+                            required
+                        >
+                            <option value="">
+                                Selecione a modalidade
+                            </option>
 
-                            <div class="vagas-info">
-                                <span>12 de 20 vagas</span>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 60%;"></div>
-                                </div>
-                            </div>
+                            <option value="Futebol">
+                                Futebol
+                            </option>
 
-                            <div class="card-footer">
-                                <button class="btn-inscrever" data-campeonato="Campeonato Futsal City" data-modalidade="Futsal" data-local="Campinas - SP" data-vagas="12 de 20 vagas">Inscrever-se</button>
-                            </div>
-                        </div>
+                            <option value="Futebol society">
+                                Futebol society
+                            </option>
+
+                            <option value="Futsal">
+                                Futsal
+                            </option>
+
+                            <option value="Vôlei">
+                                Vôlei
+                            </option>
+
+                            <option value="Basquete">
+                                Basquete
+                            </option>
+
+                            <option value="Tênis">
+                                Tênis
+                            </option>
+                        </select>
+
                     </div>
 
-                    <div class="card">
-                        <img src="https://placehold.co/400x220/111/39ff14?text=Campeonato" alt="Campeonato de Vôlei">
+                    <div class="modal__field">
 
-                        <div class="card-content">
-                            <div class="card-top">
-                                <h3>Vôlei Open de Verão</h3>
-                                <span class="badge">Vôlei</span>
-                            </div>
+                        <label
+                            class="modal__label"
+                            for="criar-campeonato-local"
+                        >
+                            Local
+                        </label>
 
-                            <div class="card-info">
-                                <p><strong>Premiação:</strong> <span class="prize">R$ 2.000</span></p>
-                                <p>🗓 20 de Julho - 10 de Agosto</p>
-                                <p>📍 Belo Horizonte - MG</p>
-                            </div>
+                        <input
+                            class="modal__input"
+                            type="text"
+                            id="criar-campeonato-local"
+                            name="local"
+                            placeholder="Ex: Ginásio Municipal"
+                            minlength="2"
+                            maxlength="150"
+                            required
+                        >
 
-                            <div class="vagas-info">
-                                <span>6 de 12 vagas</span>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 50%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="card-footer">
-                                <button class="btn-inscrever" data-campeonato="Vôlei Open de Verão" data-modalidade="Vôlei" data-local="Belo Horizonte - MG" data-vagas="6 de 12 vagas">Inscrever-se</button>
-                            </div>
-                        </div>
                     </div>
+
+                    <!-- CAMPO CIDADE -->
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="criar-campeonato-cidade"
+                        >
+                            Cidade
+                        </label>
+
+                        <select
+                            class="modal__input"
+                            id="criar-campeonato-cidade"
+                            name="cidade"
+                            required
+                        >
+                            <option value="">
+                                Selecione a cidade
+                            </option>
+
+                            <option value="Abadia dos Dourados">
+                                Abadia dos Dourados
+                            </option>
+
+                            <option value="Água Comprida">
+                                Água Comprida
+                            </option>
+
+                            <option value="Araguari">
+                                Araguari
+                            </option>
+
+                            <option value="Araporã">
+                                Araporã
+                            </option>
+
+                            <option value="Arapuá">
+                                Arapuá
+                            </option>
+
+                            <option value="Araxá">
+                                Araxá
+                            </option>
+
+                            <option value="Cachoeira Dourada">
+                                Cachoeira Dourada
+                            </option>
+
+                            <option value="Campina Verde">
+                                Campina Verde
+                            </option>
+
+                            <option value="Campo Florido">
+                                Campo Florido
+                            </option>
+
+                            <option value="Campos Altos">
+                                Campos Altos
+                            </option>
+
+                            <option value="Canápolis">
+                                Canápolis
+                            </option>
+
+                            <option value="Capinópolis">
+                                Capinópolis
+                            </option>
+
+                            <option value="Carmo do Paranaíba">
+                                Carmo do Paranaíba
+                            </option>
+
+                            <option value="Carneirinho">
+                                Carneirinho
+                            </option>
+
+                            <option value="Cascalho Rico">
+                                Cascalho Rico
+                            </option>
+
+                            <option value="Centralina">
+                                Centralina
+                            </option>
+
+                            <option value="Comendador Gomes">
+                                Comendador Gomes
+                            </option>
+
+                            <option value="Conceição das Alagoas">
+                                Conceição das Alagoas
+                            </option>
+
+                            <option value="Conquista">
+                                Conquista
+                            </option>
+
+                            <option value="Coromandel">
+                                Coromandel
+                            </option>
+
+                            <option value="Cruzeiro da Fortaleza">
+                                Cruzeiro da Fortaleza
+                            </option>
+
+                            <option value="Delta">
+                                Delta
+                            </option>
+
+                            <option value="Douradoquara">
+                                Douradoquara
+                            </option>
+
+                            <option value="Estrela do Sul">
+                                Estrela do Sul
+                            </option>
+
+                            <option value="Fronteira">
+                                Fronteira
+                            </option>
+
+                            <option value="Frutal">
+                                Frutal
+                            </option>
+
+                            <option value="Grupiara">
+                                Grupiara
+                            </option>
+
+                            <option value="Guimarânia">
+                                Guimarânia
+                            </option>
+
+                            <option value="Gurinhatã">
+                                Gurinhatã
+                            </option>
+
+                            <option value="Ibiá">
+                                Ibiá
+                            </option>
+
+                            <option value="Indianópolis">
+                                Indianópolis
+                            </option>
+
+                            <option value="Ipiaçu">
+                                Ipiaçu
+                            </option>
+
+                            <option value="Iraí de Minas">
+                                Iraí de Minas
+                            </option>
+
+                            <option value="Itapagipe">
+                                Itapagipe
+                            </option>
+
+                            <option value="Ituiutaba">
+                                Ituiutaba
+                            </option>
+
+                            <option value="Iturama">
+                                Iturama
+                            </option>
+
+                            <option value="Lagoa Formosa">
+                                Lagoa Formosa
+                            </option>
+
+                            <option value="Limeira do Oeste">
+                                Limeira do Oeste
+                            </option>
+
+                            <option value="Matutina">
+                                Matutina
+                            </option>
+
+                            <option value="Monte Alegre de Minas">
+                                Monte Alegre de Minas
+                            </option>
+
+                            <option value="Monte Carmelo">
+                                Monte Carmelo
+                            </option>
+
+                            <option value="Nova Ponte">
+                                Nova Ponte
+                            </option>
+
+                            <option value="Patos de Minas">
+                                Patos de Minas
+                            </option>
+
+                            <option value="Patrocínio">
+                                Patrocínio
+                            </option>
+
+                            <option value="Pedrinópolis">
+                                Pedrinópolis
+                            </option>
+
+                            <option value="Perdizes">
+                                Perdizes
+                            </option>
+
+                            <option value="Pirajuba">
+                                Pirajuba
+                            </option>
+
+                            <option value="Planura">
+                                Planura
+                            </option>
+
+                            <option value="Prata">
+                                Prata
+                            </option>
+
+                            <option value="Pratinha">
+                                Pratinha
+                            </option>
+
+                            <option value="Rio Paranaíba">
+                                Rio Paranaíba
+                            </option>
+
+                            <option value="Romaria">
+                                Romaria
+                            </option>
+
+                            <option value="Sacramento">
+                                Sacramento
+                            </option>
+
+                            <option value="Santa Juliana">
+                                Santa Juliana
+                            </option>
+
+                            <option value="Santa Rosa da Serra">
+                                Santa Rosa da Serra
+                            </option>
+
+                            <option value="Santa Vitória">
+                                Santa Vitória
+                            </option>
+
+                            <option value="São Francisco de Sales">
+                                São Francisco de Sales
+                            </option>
+
+                            <option value="São Gotardo">
+                                São Gotardo
+                            </option>
+
+                            <option value="Serra do Salitre">
+                                Serra do Salitre
+                            </option>
+
+                            <option value="Tapira">
+                                Tapira
+                            </option>
+
+                            <option value="Tiros">
+                                Tiros
+                            </option>
+
+                            <option value="Tupaciguara">
+                                Tupaciguara
+                            </option>
+
+                            <option value="Uberaba">
+                                Uberaba
+                            </option>
+
+                            <option value="Uberlândia">
+                                Uberlândia
+                            </option>
+
+                            <option value="União de Minas">
+                                União de Minas
+                            </option>
+
+                            <option value="Veríssimo">
+                                Veríssimo
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="criar-campeonato-data-inicio"
+                        >
+                            Data de início
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="date"
+                            id="criar-campeonato-data-inicio"
+                            name="data_inicio"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="criar-campeonato-data-fim"
+                        >
+                            Data de término
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="date"
+                            id="criar-campeonato-data-fim"
+                            name="data_fim"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="criar-campeonato-premiacao"
+                        >
+                            Premiação
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="text"
+                            id="criar-campeonato-premiacao"
+                            name="premio"
+                            placeholder="Ex: R$ 2.000,00"
+                            inputmode="decimal"
+                            maxlength="30"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="modal__field">
+
+                        <label
+                            class="modal__label"
+                            for="criar-campeonato-vagas"
+                        >
+                            Número de vagas
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="number"
+                            id="criar-campeonato-vagas"
+                            name="vagas_total"
+                            min="2"
+                            max="10000"
+                            step="1"
+                            placeholder="Ex: 16"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="modal__field reserva-field-full">
+
+                        <label
+                            class="modal__label"
+                            for="criar-campeonato-imagem"
+                        >
+                            Imagem do campeonato
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="file"
+                            id="criar-campeonato-imagem"
+                            name="imagem"
+                            accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                        >
+
+                        <small>
+                            Selecione uma imagem JPG, PNG ou WEBP.
+                            Tamanho máximo: 5 MB.
+                        </small>
+
+                    </div>
+
+                    <div class="modal__field reserva-field-full">
+
+                        <p
+                            class="reserva-message"
+                            id="criar-campeonato-message"
+                            aria-live="polite"
+                        ></p>
+
+                    </div>
+
                 </div>
-            </div>
+
+                <button
+                    class="modal__button modal__button--primary"
+                    type="submit"
+                >
+                    Criar campeonato
+                </button>
+
+            </form>
+
         </div>
+
     </div>
+</div>
 
-    <!-- MODAL DE CRIAR CAMPEONATO -->
-    <div class="modal modal--hidden" id="criar-campeonato-modal">
-        <div class="modal__overlay" id="criar-campeonato-overlay"></div>
+<!-- INSCRIÇÃO NO CAMPEONATO -->
+<div
+    class="modal modal--hidden"
+    id="inscricao-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-inscricao"
+>
+    <div
+        class="modal__overlay"
+        id="inscricao-overlay"
+    ></div>
 
-        <div class="modal__container modal__container--reserva">
-            <div class="modal__header modal__header--simple">
-                <h2>Criar campeonato</h2>
-                <button class="modal__close-button" id="criar-campeonato-close" type="button">×</button>
-            </div>
+    <div class="modal__container modal__container--reserva">
 
-            <div class="modal__body">
-                <form class="modal__form" id="criar-campeonato-form">
-                    <div class="reserva-form-grid">
-                        <div class="modal__field">
-                            <label class="modal__label" for="criar-campeonato-nome">Nome do campeonato</label>
-                            <input class="modal__input" type="text" id="criar-campeonato-nome" placeholder="Digite o nome do campeonato">
-                        </div>
+        <div class="modal__header modal__header--simple">
 
-                        <div class="modal__field">
-                            <label class="modal__label" for="criar-campeonato-modalidade">Modalidade</label>
-                            <select class="modal__input" id="criar-campeonato-modalidade">
-                                <option value="">Selecione a modalidade</option>
-                                <option>Futebol</option>
-                                <option>Futsal</option>
-                                <option>Vôlei</option>
-                                <option>Basquete</option>
-                            </select>
-                        </div>
+            <h2 id="titulo-inscricao">
+                Inscrição no campeonato
+            </h2>
 
-                        <div class="modal__field">
-                            <label class="modal__label" for="criar-campeonato-local">Local</label>
-                            <input class="modal__input" type="text" id="criar-campeonato-local" placeholder="Digite o local do campeonato">
-                        </div>
+            <button
+                class="modal__close-button"
+                id="inscricao-close"
+                type="button"
+                aria-label="Fechar inscrição"
+            >
+                &times;
+            </button>
 
-                        <div class="modal__field">
-                            <label class="modal__label" for="criar-campeonato-data-inicio">Data de início</label>
-                            <input class="modal__input" type="date" id="criar-campeonato-data-inicio">
-                        </div>
-
-                        <div class="modal__field">
-                            <label class="modal__label" for="criar-campeonato-data-fim">Data de término</label>
-                            <input class="modal__input" type="date" id="criar-campeonato-data-fim">
-                        </div>
-
-                        <div class="modal__field">
-                            <label class="modal__label" for="criar-campeonato-premiacao">Premiação</label>
-                            <input class="modal__input" type="text" id="criar-campeonato-premiacao" placeholder="Ex: R$ 2.000">
-                        </div>
-
-                        <div class="modal__field">
-                            <label class="modal__label" for="criar-campeonato-vagas">Número de vagas</label>
-                            <input class="modal__input" type="number" id="criar-campeonato-vagas" min="2" placeholder="Ex: 16">
-                        </div>
-
-                        <div class="modal__field reserva-field-full">
-                            <p class="reserva-message" id="criar-campeonato-message"></p>
-                        </div>
-                    </div>
-
-                    <button class="modal__button modal__button--primary" type="submit">
-                        Criar campeonato
-                    </button>
-                </form>
-            </div>
         </div>
-    </div>
 
-    <!-- MODAL DE INSCRIÇÃO -->
-    <div class="modal modal--hidden" id="inscricao-modal">
-        <div class="modal__overlay" id="inscricao-overlay"></div>
+        <div class="modal__body">
 
-        <div class="modal__container modal__container--reserva">
-            <div class="modal__header modal__header--simple">
-                <h2>Inscrição no campeonato</h2>
-                <button class="modal__close-button" id="inscricao-close" type="button">×</button>
-            </div>
+            <div class="reserva-resumo">
 
-            <div class="modal__body">
-                <div class="reserva-resumo">
-                    <h3 id="inscricao-campeonato">Campeonato</h3>
+                <h3 id="inscricao-campeonato">
+                    Campeonato
+                </h3>
 
-                    <div class="reserva-detalhes">
-                        <p><strong>Modalidade:</strong> <span id="inscricao-modalidade"></span></p>
-                        <p><strong>Local:</strong> <span id="inscricao-local"></span></p>
-                        <p><strong>Vagas:</strong> <span id="inscricao-vagas"></span></p>
-                    </div>
+                <div class="reserva-detalhes">
+
+                    <p>
+                        <strong>Modalidade:</strong>
+                        <span id="inscricao-modalidade"></span>
+                    </p>
+
+                    <p>
+                        <strong>Local:</strong>
+                        <span id="inscricao-local"></span>
+                    </p>
+
+                    <p>
+                        <strong>Vagas:</strong>
+                        <span id="inscricao-vagas"></span>
+                    </p>
+
                 </div>
 
-                <form class="modal__form" id="inscricao-form">
-                    <div class="reserva-form-grid">
-                        <div class="modal__field">
-                            <label class="modal__label" for="inscricao-nome">Nome completo</label>
-                            <input class="modal__input" type="text" id="inscricao-nome" placeholder="Digite seu nome">
-                        </div>
+            </div>
 
-                        <div class="modal__field">
-                            <label class="modal__label" for="inscricao-telefone">Telefone</label>
-                            <input class="modal__input" type="tel" id="inscricao-telefone" placeholder="(00) 00000-0000">
-                        </div>
+            <form
+                class="modal__form"
+                id="inscricao-form"
+                method="post"
+            >
+                <div class="reserva-form-grid">
 
-                        <div class="modal__field reserva-field-full">
-                            <label class="modal__label" for="inscricao-email">E-mail</label>
-                            <input class="modal__input" type="email" id="inscricao-email" placeholder="Digite seu e-mail">
-                        </div>
+                    <div class="modal__field">
 
-                        <div class="modal__field reserva-field-full">
-                            <p class="reserva-message" id="inscricao-message"></p>
-                        </div>
+                        <label
+                            class="modal__label"
+                            for="inscricao-nome"
+                        >
+                            Nome completo
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="text"
+                            id="inscricao-nome"
+                            name="nome_responsavel"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                            required
+                        >
+
                     </div>
 
-                    <button class="modal__button modal__button--primary" type="submit">
-                        Confirmar inscrição
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+                    <div class="modal__field">
 
-    <script src="JavaScript/app.js"></script>
+                        <label
+                            class="modal__label"
+                            for="inscricao-telefone"
+                        >
+                            Telefone
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="tel"
+                            id="inscricao-telefone"
+                            name="telefone"
+                            placeholder="(00) 00000-0000"
+                            autocomplete="tel"
+                            maxlength="20"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="modal__field reserva-field-full">
+
+                        <label
+                            class="modal__label"
+                            for="inscricao-email"
+                        >
+                            E-mail
+                        </label>
+
+                        <input
+                            class="modal__input"
+                            type="email"
+                            id="inscricao-email"
+                            name="email"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="modal__field reserva-field-full">
+
+                        <p
+                            class="reserva-message"
+                            id="inscricao-message"
+                            aria-live="polite"
+                        ></p>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="modal__button modal__button--primary"
+                    type="submit"
+                >
+                    Confirmar inscrição
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+<script
+    src="JavaScript/app.js"
+    defer
+></script>
+
 </body>
 </html>

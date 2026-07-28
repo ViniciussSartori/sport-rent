@@ -1,93 +1,176 @@
 <?php
+
 header("Content-Type: application/json; charset=utf-8");
+
 require_once "conexao.php";
 
-$campeonato_nome = trim($_POST["campeonato_nome"] ?? "");
-$nome_responsavel = trim($_POST["nome_responsavel"] ?? "");
+function responderErro(string $mensagem, int $codigo = 400): void
+{
+    if (isset($GLOBALS["pdo"]) &&
+        $GLOBALS["pdo"]->inTransaction()) {
+
+        $GLOBALS["pdo"]->rollBack();
+    }
+
+    http_response_code($codigo);
+
+    echo json_encode([
+        "status" => "erro",
+        "mensagem" => $mensagem
+    ], JSON_UNESCAPED_UNICODE);
+
+    exit;
+}
+
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    responderErro("Método não permitido.", 405);
+}
+
+$campeonatoId = filter_input(
+    INPUT_POST,
+    "campeonato_id",
+    FILTER_VALIDATE_INT
+);
+
+$campeonatoNome = trim(
+    $_POST["campeonato_nome"] ?? ""
+);
+
+$nomeResponsavel = trim(
+    $_POST["nome_responsavel"] ?? ""
+);
+
 $telefone = trim($_POST["telefone"] ?? "");
 $email = trim($_POST["email"] ?? "");
 
 if (
-    $campeonato_nome == "" ||
-    $nome_responsavel == "" ||
-    $telefone == "" ||
-    $email == ""
+    (!$campeonatoId && $campeonatoNome === "") ||
+    $nomeResponsavel === "" ||
+    $telefone === "" ||
+    $email === ""
 ) {
-    echo json_encode([
-        "status" => "erro",
-        "mensagem" => "Preencha todos os campos."
-    ]);
-    exit;
+    responderErro("Preencha todos os campos.");
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode([
-        "status" => "erro",
-        "mensagem" => "Digite um e-mail válido."
-    ]);
-    exit;
+    responderErro("Informe um e-mail válido.");
 }
 
 try {
-    $sqlCampeonato = "SELECT id FROM campeonatos WHERE nome = :nome LIMIT 1";
-    $stmtCampeonato = $pdo->prepare($sqlCampeonato);
-    $stmtCampeonato->execute([
-        ":nome" => $campeonato_nome
-    ]);
+    $pdo->beginTransaction();
 
-    $campeonato = $stmtCampeonato->fetch(PDO::FETCH_ASSOC);
+    if ($campeonatoId) {
+        $sqlCampeonato = "
+            SELECT id, nome, vagas_total
+            FROM campeonatos
+            WHERE id = :campeonato
+            LIMIT 1
+            FOR UPDATE
+        ";
 
-    if (!$campeonato) {
-        echo json_encode([
-            "status" => "erro",
-            "mensagem" => "Campeonato não encontrado no banco."
-        ]);
-        exit;
+        $parametroCampeonato = $campeonatoId;
+    } else {
+        $sqlCampeonato = "
+            SELECT id, nome, vagas_total
+            FROM campeonatos
+            WHERE nome = :campeonato
+            LIMIT 1
+            FOR UPDATE
+        ";
+
+        $parametroCampeonato = $campeonatoNome;
     }
 
-    $campeonato_id = $campeonato["id"];
+    $stmtCampeonato = $pdo->prepare($sqlCampeonato);
 
-    $sqlVerificar = "SELECT id FROM inscricoes_campeonato
-                     WHERE campeonato_id = :campeonato_id
-                     AND email = :email
-                     LIMIT 1";
+    $stmtCampeonato->execute([
+        ":campeonato" => $parametroCampeonato
+    ]);
 
-    $stmtVerificar = $pdo->prepare($sqlVerificar);
-    $stmtVerificar->execute([
-        ":campeonato_id" => $campeonato_id,
+    $campeonato =
+        $stmtCampeonato->fetch(PDO::FETCH_ASSOC);
+
+    if (!$campeonato) {
+        responderErro("Campeonato não encontrado.");
+    }
+
+    $stmtQuantidade = $pdo->prepare("
+        SELECT COUNT(*)
+        FROM inscricoes_campeonato
+        WHERE campeonato_id = :campeonato_id
+    ");
+
+    $stmtQuantidade->execute([
+        ":campeonato_id" => $campeonato["id"]
+    ]);
+
+    $quantidadeInscritos =
+        (int) $stmtQuantidade->fetchColumn();
+
+    if (
+        $quantidadeInscritos >=
+        (int) $campeonato["vagas_total"]
+    ) {
+        responderErro(
+            "Esse campeonato não possui mais vagas."
+        );
+    }
+
+    $stmtDuplicada = $pdo->prepare("
+        SELECT COUNT(*)
+        FROM inscricoes_campeonato
+        WHERE campeonato_id = :campeonato_id
+          AND email = :email
+    ");
+
+    $stmtDuplicada->execute([
+        ":campeonato_id" => $campeonato["id"],
         ":email" => $email
     ]);
 
-    if ($stmtVerificar->fetch()) {
-        echo json_encode([
-            "status" => "erro",
-            "mensagem" => "Esse e-mail já está inscrito neste campeonato."
-        ]);
-        exit;
+    if ((int) $stmtDuplicada->fetchColumn() > 0) {
+        responderErro(
+            "Este e-mail já está inscrito neste campeonato."
+        );
     }
 
-    $sql = "INSERT INTO inscricoes_campeonato
-            (campeonato_id, usuario_id, nome_time, nome_responsavel, telefone, email)
-            VALUES
-            (:campeonato_id, NULL, NULL, :nome_responsavel, :telefone, :email)";
+    $stmtInserir = $pdo->prepare("
+        INSERT INTO inscricoes_campeonato (
+            campeonato_id,
+            nome_responsavel,
+            telefone,
+            email
+        ) VALUES (
+            :campeonato_id,
+            :nome_responsavel,
+            :telefone,
+            :email
+        )
+    ");
 
-    $stmt = $pdo->prepare($sql);
-
-    $stmt->execute([
-        ":campeonato_id" => $campeonato_id,
-        ":nome_responsavel" => $nome_responsavel,
+    $stmtInserir->execute([
+        ":campeonato_id" => $campeonato["id"],
+        ":nome_responsavel" => $nomeResponsavel,
         ":telefone" => $telefone,
         ":email" => $email
     ]);
 
+    $pdo->commit();
+
     echo json_encode([
         "status" => "sucesso",
         "mensagem" => "Inscrição realizada com sucesso!"
-    ]);
-} catch (PDOException $erro) {
+    ], JSON_UNESCAPED_UNICODE);
+
+} catch (Throwable $erro) {
+    if ($pdo->inTransaction()) {
+        $pdo->rollBack();
+    }
+
+    http_response_code(500);
+
     echo json_encode([
         "status" => "erro",
-        "mensagem" => "Erro ao realizar inscrição: " . $erro->getMessage()
-    ]);
+        "mensagem" => "Erro ao realizar a inscrição."
+    ], JSON_UNESCAPED_UNICODE);
 }
-?>
